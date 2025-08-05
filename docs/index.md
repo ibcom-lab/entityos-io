@@ -20,3 +20,7 @@ title: Home
 
 ### Apps
 - [ORG](https://org.entityos.app)
+
+### Tech
+- [Models](/models)
+- [Continuity](/continuity)
