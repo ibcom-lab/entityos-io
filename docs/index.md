@@ -24,3 +24,17 @@ title: Home
 ### Tech
 - [Models](/models)
 - [Continuity](/continuity)
+
+### Repos
+- [entityos-aws](https://github.com/ibcom-lab/entityos-aws)
+- [entityos-cloud-build](https://github.com/ibcom-lab/entityos-cloud-build)
+- [entityos-model](https://github.com/ibcom-lab/entityos-model)
+- [entityos-continuity](https://github.com/ibcom-lab/entityos-continuity)
+- [entityos-io](https://github.com/ibcom-lab/entityos-io)
+- [entityos-sdk](https://github.com/ibcom-lab/entityos-sdk)
+- [entityos-sdk-layers](https://github.com/ibcom-lab/entityos-sdk-layers)
+- [entityos-sdk-npm](https://github.com/ibcom-lab/entityos-sdk-npm)
+- [entityos-identity-trust](https://github.com/ibcom-lab/entityos-identity-trust)
+- [entityos-ai](https://github.com/ibcom-lab/entityos-ai)
+- [entityos-push](https://github.com/ibcom-lab/entityos-push)
+- [entityos-tech](https://github.com/ibcom-lab/entityos-tech)
