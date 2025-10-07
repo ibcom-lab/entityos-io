@@ -13,18 +13,15 @@ permalink: /models/
 
 [Repo](https://github.com/ibcom-lab/entityos-model)
 
-## Storage Model
-
-### Schema
+## Storage Model Schema
 
 - [learn.entityos.cloud/schema](https://learn.entityos.cloud/schema)
 
-**Types:**
-
 ### Object Types
+
 |ID|Name|Notes|
 |--|----|-----|
-|1|Audit|Not 2,3 or 4 (Deprecated|
+|1|Audit|Not 2,3 or 4 -Deprecated|
 |2|Core|SEC_|
 |3|System|No Space ID|
 |4|Space|Has Space ID|
