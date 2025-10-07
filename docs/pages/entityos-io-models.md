@@ -4,7 +4,7 @@ title: Models - entityOS.io
 permalink: /models/
 ---
 
-## Models
+# Models
 
 - Interface - supporting organisations etc via apps 
 - Storage
@@ -12,6 +12,21 @@ permalink: /models/
 	- Used by entityos-continuity - /model folder
 
 [Repo](https://github.com/ibcom-lab/entityos-model)
+
+## Storage Model
+
+### Schema
+
+**Types:**
+
+### Object Types
+|ID|Name|Notes|
+|--|----|-----|
+|1|Audit|Not 2,3 or 4 (Deprecated|
+|2|Core|SEC_|
+|3|System|No Space ID|
+|4|Space|Has Space ID|
+
 
 ## Methods
 
