@@ -17,6 +17,8 @@ permalink: /models/
 
 ### Schema
 
+- [learn.entityos.cloud/schema](https://learn.entityos.cloud/schema)
+
 **Types:**
 
 ### Object Types
