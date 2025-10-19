@@ -1,0 +1,182 @@
+[
+    {
+        "name": "product",
+        "notes": "Setup your products and manage orders, including status tracking and invoicing.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "financial",
+        "notes": "Manage all your financials, including tax and payroll (Australia) reporting.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "action",
+        "notes": "Manage actions &amp; activity with your space.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "admin",
+        "notes": "Platform administration.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    },
+    {
+        "name": "contact",
+        "notes": "Manage contact data for businesses and people eg customers, suppliers, partners.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "core",
+        "notes": "Core system functions.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    },
+    {
+        "name": "document",
+        "notes": "Manage your private, internal and public documents and folders.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "event",
+        "notes": "Manage an event, including attendee management.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "logon",
+        "notes": "Used to authenticate ie logon to mydigitalstructure.cloud.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    },
+    {
+        "name": "messaging",
+        "notes": "Manage conversions (posts/comments), email and send SMSs.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    },
+    {
+        "name": "news",
+        "notes": "Create news articles to send to contacts with tracking. ",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "opportunity",
+        "notes": "Manage you new sales opportunities, including tracking.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "project",
+        "notes": "Manage your projects and tasks.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "register",
+        "notes": "System functions for registering spaces and self-registering users.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Set up",
+        "uuid": ""
+    },
+    {
+        "name": "setup",
+        "notes": "Use to set up (configure) the space - eg action types, financial accounts, users.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Set up",
+        "uuid": ""
+    },
+    {
+        "name": "site",
+        "notes": "Functions to work with a website (private or public) - ie get list of products to show in an ecommerce website.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    },
+    {
+        "name": "support",
+        "notes": "Manage support issues - as a user of mydigitalstructure.cloud or to manage your own \"help desk\".",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    },
+    {
+        "name": "network",
+        "notes": "Network functions to allow you to connect to other mydigitalstructure.cloud spaces.",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    },
+    {
+        "name": "structure",
+        "notes": "Functions to add fields to existing organisational structures (object) ie Contact Person and also to create your own structures (objects).",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "Organisational",
+        "uuid": ""
+    },
+    {
+        "name": "attach",
+        "notes": "Attach files and URLs to organisational data (objects).",
+        "type": "1",
+        "typename": "Common",
+        "category": 1,
+        "categoryname": "System",
+        "uuid": ""
+    }
+]
