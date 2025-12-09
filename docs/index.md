@@ -38,3 +38,6 @@ title: Home
 - [entityos-ai](https://github.com/ibcom-lab/entityos-ai)
 - [entityos-push](https://github.com/ibcom-lab/entityos-push)
 - [entityos-tech](https://github.com/ibcom-lab/entityos-tech)
+
+### Genesis
+- [Info](/genesis)
