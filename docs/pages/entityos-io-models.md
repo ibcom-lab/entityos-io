@@ -20,7 +20,7 @@ permalink: /models/
 ### Object Types
 
 |ID|Name|Notes|
-|--|----|-----|
+|:--:|:---:|:-----|
 |1|Audit|Not 2,3 or 4 Deprecated|
 |2|Core|SEC_|
 |3|System|No Space ID|
