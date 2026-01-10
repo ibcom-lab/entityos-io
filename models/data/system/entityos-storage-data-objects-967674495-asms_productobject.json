@@ -1,0 +1,128 @@
+{
+    "object": {
+        "name": "asms_productobject",
+        "id": "967674495"
+    },
+    "data": [
+        {
+            "productobjectid": "24",
+            "productid": "81",
+            "objectid": "51",
+            "guid": "516dd9c5-c4a4-4508-8fb6-090b7f3130f6"
+        },
+        {
+            "productobjectid": "25",
+            "productid": "81",
+            "objectid": "52",
+            "guid": "39e3ce48-8e63-4ad8-8d32-3f9bf241f613"
+        },
+        {
+            "productobjectid": "26",
+            "productid": "81",
+            "objectid": "53",
+            "guid": "56fe977c-8cc6-4776-a2ad-e4b3936ba64a"
+        },
+        {
+            "productobjectid": "27",
+            "productid": "81",
+            "objectid": "54",
+            "guid": "83f07919-f0be-4223-a00f-8b100565ba64"
+        },
+        {
+            "productobjectid": "28",
+            "productid": "81",
+            "objectid": "55",
+            "guid": "8f23fb0f-f8a8-4533-9365-de56bcb01a19"
+        },
+        {
+            "productobjectid": "29",
+            "productid": "81",
+            "objectid": "56",
+            "guid": "4663d329-4f92-4a3e-b955-95872d2b7e0c"
+        },
+        {
+            "productobjectid": "30",
+            "productid": "81",
+            "objectid": "57",
+            "guid": "6f65bc1f-7324-4459-8d35-e2dd206896ad"
+        },
+        {
+            "productobjectid": "31",
+            "productid": "81",
+            "objectid": "58",
+            "guid": "5d9ccb69-4aea-4093-8850-427ff5b955b9"
+        },
+        {
+            "productobjectid": "32",
+            "productid": "81",
+            "objectid": "59",
+            "guid": "13e683b0-b40e-4c18-aab5-131bad9345b0"
+        },
+        {
+            "productobjectid": "33",
+            "productid": "81",
+            "objectid": "60",
+            "guid": "75699506-ac4d-44eb-be1a-28178edaeed2"
+        },
+        {
+            "productobjectid": "34",
+            "productid": "81",
+            "objectid": "61",
+            "guid": "6d6a3d60-c58c-47ec-9244-cb7aa4e23903"
+        },
+        {
+            "productobjectid": "35",
+            "productid": "81",
+            "objectid": "62",
+            "guid": "d07e7791-42b4-4fbf-bddf-ee95eecc8936"
+        },
+        {
+            "productobjectid": "36",
+            "productid": "81",
+            "objectid": "63",
+            "guid": "0e60aeec-f3ff-4158-9501-c7793e4ce6ca"
+        },
+        {
+            "productobjectid": "37",
+            "productid": "81",
+            "objectid": "64",
+            "guid": "ddd82254-7218-460f-bdee-5b17b0fa7c11"
+        },
+        {
+            "productobjectid": "38",
+            "productid": "81",
+            "objectid": "65",
+            "guid": "dd813356-216a-4d72-8e94-c1a17ffc0d26"
+        },
+        {
+            "productobjectid": "39",
+            "productid": "65",
+            "objectid": "44",
+            "guid": "8409ba03-a2ad-4ac0-a751-1a7e383f7401"
+        },
+        {
+            "productobjectid": "40",
+            "productid": "66",
+            "objectid": "44",
+            "guid": "67dd9f68-5c50-465c-99e3-59e4f3eee177"
+        },
+        {
+            "productobjectid": "41",
+            "productid": "34",
+            "objectid": "31",
+            "guid": "7d285c50-d715-47d9-815a-28d9819841d0"
+        },
+        {
+            "productobjectid": "42",
+            "productid": "11",
+            "objectid": "45",
+            "guid": "e9a4ff58-4f8d-43ec-aca0-1bf44dd3c8fe"
+        },
+        {
+            "productobjectid": "43",
+            "productid": "33",
+            "objectid": "26",
+            "guid": "09abd25e-2081-4920-84b1-49039871f58a"
+        }
+    ]
+}

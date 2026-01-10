@@ -1,0 +1,148 @@
+{
+    "object": {
+        "name": "asms_automationcache",
+        "id": "1860201677"
+    },
+    "data": [
+        {
+            "cacheid": "281",
+            "automationid": "1",
+            "cachekey": "LastSQL",
+            "cachevalue": "",
+            "guid": "c207536b-89cd-4f41-81c3-c59db5a6c67c"
+        },
+        {
+            "cacheid": "282",
+            "automationid": "1",
+            "cachekey": "SessionId",
+            "cachevalue": "12265676",
+            "guid": "17923d1a-49b6-4538-b887-27d884bada6b"
+        },
+        {
+            "cacheid": "283",
+            "automationid": "1",
+            "cachekey": "Browser",
+            "cachevalue": "0",
+            "guid": "3ec386a2-3372-4c9c-9796-bd99031e6abc"
+        },
+        {
+            "cacheid": "284",
+            "automationid": "1",
+            "cachekey": "bShortType",
+            "cachevalue": "IE",
+            "guid": "41011463-8e7d-4cab-ad8a-8c18d840e69b"
+        },
+        {
+            "cacheid": "285",
+            "automationid": "1",
+            "cachekey": "StoreSite",
+            "cachevalue": "False",
+            "guid": "796a7040-1a9a-49bc-90c7-e0e415be34ed"
+        },
+        {
+            "cacheid": "286",
+            "automationid": "1",
+            "cachekey": "Site",
+            "cachevalue": "475",
+            "guid": "56bf835a-bc90-407f-82ac-0cabd799ba92"
+        },
+        {
+            "cacheid": "287",
+            "automationid": "1",
+            "cachekey": "SiteId",
+            "cachevalue": "475",
+            "guid": "3a4f06fa-3b21-4873-8e96-08459f571d02"
+        },
+        {
+            "cacheid": "288",
+            "automationid": "1",
+            "cachekey": "MasterStyleCSS",
+            "cachevalue": "portal/myworkspace/format/style.css",
+            "guid": "a2040da0-a7d7-4e3e-850d-23f98370093e"
+        },
+        {
+            "cacheid": "289",
+            "automationid": "1",
+            "cachekey": "AltBusDesc",
+            "cachevalue": "Business",
+            "guid": "ff43752d-1899-442c-a1c3-b5bfcd0cb2c3"
+        },
+        {
+            "cacheid": "290",
+            "automationid": "1",
+            "cachekey": "PersonId",
+            "cachevalue": "3",
+            "guid": "8c7f5428-5fc2-41b7-a187-c15addceb2b2"
+        },
+        {
+            "cacheid": "291",
+            "automationid": "1",
+            "cachekey": "ContPersonId",
+            "cachevalue": "1000000078",
+            "guid": "9261280e-bfec-4f08-97ad-0871fb4ed482"
+        },
+        {
+            "cacheid": "292",
+            "automationid": "1",
+            "cachekey": "BusinessId",
+            "cachevalue": "1",
+            "guid": "a0943e0a-4609-4ba2-8d3f-249d01a8287f"
+        },
+        {
+            "cacheid": "293",
+            "automationid": "1",
+            "cachekey": "ContBusinessId",
+            "cachevalue": "1000085",
+            "guid": "3eaf97e6-5c1a-4de5-b831-9668d163942f"
+        },
+        {
+            "cacheid": "294",
+            "automationid": "1",
+            "cachekey": "UserName",
+            "cachevalue": "anne.boundy",
+            "guid": "31e7b132-020f-46db-bee0-7e1cb8f27216"
+        },
+        {
+            "cacheid": "295",
+            "automationid": "1",
+            "cachekey": "eMail",
+            "cachevalue": "anne.boundy@ibcom.com.au",
+            "guid": "fcc086e2-9132-48c0-bd91-197f80859b47"
+        },
+        {
+            "cacheid": "296",
+            "automationid": "1",
+            "cachekey": "LastLogon",
+            "cachevalue": "27/03/2007 11:08:53 AM",
+            "guid": "8cd9376d-dd10-4743-9b2f-843a8257e171"
+        },
+        {
+            "cacheid": "297",
+            "automationid": "1",
+            "cachekey": "BusinessStatus",
+            "cachevalue": "1",
+            "guid": "8b097cd1-1e02-4e4d-a3ba-2da686b2ae0b"
+        },
+        {
+            "cacheid": "298",
+            "automationid": "1",
+            "cachekey": "SecurityLevel",
+            "cachevalue": "1",
+            "guid": "4788215a-ed0d-4ff2-9664-1888c8a0e3a1"
+        },
+        {
+            "cacheid": "299",
+            "automationid": "1",
+            "cachekey": "DatabaseId",
+            "cachevalue": "1",
+            "guid": "550949a5-1a76-4abd-a5e7-126bea311ebe"
+        },
+        {
+            "cacheid": "300",
+            "automationid": "1",
+            "cachekey": "LocationCountryId",
+            "cachevalue": "1",
+            "guid": "ae807843-856a-4125-bb80-acd086b0b829"
+        }
+    ]
+}

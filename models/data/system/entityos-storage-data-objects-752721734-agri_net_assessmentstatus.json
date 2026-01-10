@@ -1,0 +1,18 @@
+{
+    "object": {
+        "name": "agri_net_assessmentstatus",
+        "id": "752721734"
+    },
+    "data": [
+        {
+            "statusid": "1",
+            "value": "In Progress",
+            "guid": "90bee061-dff7-4c68-8bec-c31c4a876841"
+        },
+        {
+            "statusid": "2",
+            "value": "Completed",
+            "guid": "3b372036-396d-4794-a839-45d1e119770d"
+        }
+    ]
+}

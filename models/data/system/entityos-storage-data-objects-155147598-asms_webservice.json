@@ -1,0 +1,116 @@
+{
+    "object": {
+        "name": "asms_webservice",
+        "id": "155147598"
+    },
+    "data": [
+        {
+            "webserviceid": "1",
+            "value": "Digital Pen",
+            "description": "Accepts Digital Pen Messge",
+            "page": "ws/mydigitalspace_dps.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "96ad8676-00cd-408d-8b2e-991b062b353f"
+        },
+        {
+            "webserviceid": "2",
+            "value": "VXReferral",
+            "description": "Submit referral to VXReferral",
+            "page": "ws/mydigitalspace_vxr.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "a8fe7802-f333-4975-a2bb-eb28fe376bda"
+        },
+        {
+            "webserviceid": "3",
+            "value": "Automation",
+            "description": "Used by the mydigitalspace On-site Automation Agent",
+            "page": "ws/mydigitalspace_automation.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "64c4c23a-4215-49de-9a12-d222294581f5"
+        },
+        {
+            "webserviceid": "4",
+            "value": "Directory - Add Request",
+            "description": "Added an request/enquiry, which is logged as an opportunity.",
+            "page": "ws/mydigitalspace_directory_request.asp",
+            "helpdocumentid": "19698",
+            "internal": "N",
+            "guid": "6753cbd9-7995-4a5d-a8f3-5c816adc4c3f"
+        },
+        {
+            "webserviceid": "5",
+            "value": "Directory - Shop / Orders",
+            "description": "Manage product orders.",
+            "page": "ws/mydigitalspace_directory_shop.asp",
+            "helpdocumentid": "18712",
+            "internal": "N",
+            "guid": "bba80a2c-0823-44fc-83c8-10785301db10"
+        },
+        {
+            "webserviceid": "6",
+            "value": "Monitoring",
+            "description": "",
+            "page": "ws/mydigitalspace_monitoring.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "2f53f62d-5fec-48a1-8331-7e82c622cac3"
+        },
+        {
+            "webserviceid": "7",
+            "value": "Security - Is Logged On",
+            "description": "Check to see if user is logged on - used in conjuction with trusted logon system.",
+            "page": "ws/mydigitalspace_security.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "c8e38df6-64c4-4290-aacd-2f04029479a7"
+        },
+        {
+            "webserviceid": "8",
+            "value": "VX Referral - Get Status",
+            "description": "Get the status of referrals.",
+            "page": "ws/mydigitalspace_vxr_get_status.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "c23c8bdc-19ee-43b4-bdf5-1144863e21ae"
+        },
+        {
+            "webserviceid": "9",
+            "value": "VX Referral - Load Sales Person",
+            "description": "Automatically load sales people into VXReferral.",
+            "page": "ws/mydigitalspace_vxr_load_person.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "563c4644-d472-4293-b0e4-5dec3b328888"
+        },
+        {
+            "webserviceid": "10",
+            "value": "Directory - Site",
+            "description": "Website services (eg GetNews).",
+            "page": "ws/mydigitalspace_directory_site.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "6af1231e-714e-4c3d-9a2a-d6ae2421daf5"
+        },
+        {
+            "webserviceid": "11",
+            "value": "Billing &amp; Provisioning",
+            "description": "Billing &amp; provisioning web service for partners.",
+            "page": "ws/mydigitalspacebilling.asp",
+            "helpdocumentid": "",
+            "internal": "",
+            "guid": "8f75abd4-8580-400b-8f82-a7e8f841817d"
+        },
+        {
+            "webserviceid": "12",
+            "value": "Contacts",
+            "description": "Manage person and business contacts.",
+            "page": "ws/mydigitalspace_contacts.asp",
+            "helpdocumentid": "25863",
+            "internal": "N",
+            "guid": "d6a1b9bf-865a-4084-9231-f19c1ca7e9b5"
+        }
+    ]
+}

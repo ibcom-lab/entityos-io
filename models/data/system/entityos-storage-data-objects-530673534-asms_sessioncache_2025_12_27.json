@@ -1,0 +1,108 @@
+{
+    "object": {
+        "name": "asms_sessioncache_2025_12_27",
+        "id": "530673534"
+    },
+    "data": [
+        {
+            "sessioncacheid": "1",
+            "cachevaluetext": "#-#SessionId#-#1775122496#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.30.148#-#SessionKey#-#5a33cf59962fcaef4ff644d3e1e0ccff",
+            "guid": "2b0511bf-6c89-43d9-b525-72ba65c1aec9"
+        },
+        {
+            "sessioncacheid": "2",
+            "cachevaluetext": "#-#SessionId#-#1775122496#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.30.148#-#SessionKey#-#74a37ae2f7a5e702eb271302f0952d67",
+            "guid": "a21c74c9-279d-4f6d-a8c0-edbbb0de2884"
+        },
+        {
+            "sessioncacheid": "3",
+            "cachevaluetext": "#-#SessionId#-#1775122496#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.30.148#-#SessionKey#-#5a33cf59962fcaef4ff644d3e1e0ccff#-#SessionLastAccessed#-#12/27/2025 12:00:00 AM",
+            "guid": "9423463b-f912-49af-b8a5-7994b4bdecae"
+        },
+        {
+            "sessioncacheid": "4",
+            "cachevaluetext": "#-#SessionId#-#1775122496#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.30.148#-#SessionKey#-#74a37ae2f7a5e702eb271302f0952d67#-#SessionLastAccessed#-#12/27/2025 12:00:00 AM",
+            "guid": "f4f8608f-09bc-4ad2-b4ec-b79680d7cdbc"
+        },
+        {
+            "sessioncacheid": "5",
+            "cachevaluetext": "#-#SessionId#-#1775122498#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.43.3#-#SessionKey#-#b483639dbaba9e3d470fbfc6b8b7b6eb",
+            "guid": "21e85315-eeca-4e4d-a099-8fce8137e3f2"
+        },
+        {
+            "sessioncacheid": "6",
+            "cachevaluetext": "#-#SessionId#-#1775122498#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.43.3#-#SessionKey#-#78e3fd668961dfa8195c699c254aa07c",
+            "guid": "b02a4941-2754-4092-84b6-c0d8ce915889"
+        },
+        {
+            "sessioncacheid": "7",
+            "cachevaluetext": "#-#SessionId#-#1775122498#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.43.3#-#SessionKey#-#b483639dbaba9e3d470fbfc6b8b7b6eb#-#SessionLastAccessed#-#12/27/2025 12:00:00 AM",
+            "guid": "8bc5854c-c66c-4856-9f31-f1c3106853d6"
+        },
+        {
+            "sessioncacheid": "8",
+            "cachevaluetext": "#-#SessionId#-#1775122498#-#SessionCreated#-#12/27/2025 12:00:00 AM#-#IP#-#172.31.43.3#-#SessionKey#-#78e3fd668961dfa8195c699c254aa07c#-#SessionLastAccessed#-#12/27/2025 12:00:00 AM",
+            "guid": "b7a9700a-d2fc-42e2-95a7-3fcf55c14c5b"
+        },
+        {
+            "sessioncacheid": "9",
+            "cachevaluetext": "#-#SessionId#-#1775122499#-#SessionCreated#-#12/27/2025 12:00:01 AM#-#IP#-#172.31.6.30#-#SessionKey#-#a550e4d6a134c7dd6debff8cf539f2a5",
+            "guid": "5cee6fd2-fb38-41bd-9277-9c8f5cec6fb1"
+        },
+        {
+            "sessioncacheid": "10",
+            "cachevaluetext": "#-#SessionId#-#1775122499#-#SessionCreated#-#12/27/2025 12:00:01 AM#-#IP#-#172.31.6.30#-#SessionKey#-#a550e4d6a134c7dd6debff8cf539f2a5#-#SessionLastAccessed#-#12/27/2025 12:00:01 AM",
+            "guid": "4b32de67-0bd3-49da-9d48-3351460b7af2"
+        },
+        {
+            "sessioncacheid": "11",
+            "cachevaluetext": "#-#SessionId#-#1775122501#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.9.93#-#SessionKey#-#6f504ef465d807db78dbb9a601d3db1e",
+            "guid": "55078e87-75b8-43fa-8ac8-5a6fa4d2606e"
+        },
+        {
+            "sessioncacheid": "12",
+            "cachevaluetext": "#-#SessionId#-#1775122501#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.9.93#-#SessionKey#-#658b03a067cba927b075cfa7006b67bd",
+            "guid": "cf5025b2-50e6-4eac-be8c-efcee3f0b138"
+        },
+        {
+            "sessioncacheid": "13",
+            "cachevaluetext": "#-#SessionId#-#1775122501#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.9.93#-#SessionKey#-#6f504ef465d807db78dbb9a601d3db1e#-#SessionLastAccessed#-#12/27/2025 12:00:02 AM",
+            "guid": "05e48e6b-6410-4b1f-93b0-b932c48f9309"
+        },
+        {
+            "sessioncacheid": "14",
+            "cachevaluetext": "#-#SessionId#-#1775122501#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.9.93#-#SessionKey#-#658b03a067cba927b075cfa7006b67bd#-#SessionLastAccessed#-#12/27/2025 12:00:02 AM",
+            "guid": "6d8106c9-2b96-46ee-a618-fc369d583c83"
+        },
+        {
+            "sessioncacheid": "15",
+            "cachevaluetext": "#-#SessionId#-#1775122502#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.23.49#-#SessionKey#-#b78bac84125a1a6ab0809b9177afed38",
+            "guid": "e3fad947-c49d-4a95-9e2b-c4d2c762267a"
+        },
+        {
+            "sessioncacheid": "16",
+            "cachevaluetext": "#-#SessionId#-#1775122502#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.23.49#-#SessionKey#-#b78bac84125a1a6ab0809b9177afed38#-#SessionLastAccessed#-#12/27/2025 12:00:02 AM",
+            "guid": "c2acbb17-08b7-4646-8882-d3e1d43e8aa9"
+        },
+        {
+            "sessioncacheid": "17",
+            "cachevaluetext": "#-#SessionId#-#1775122504#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.23.49#-#SessionKey#-#de90232b92b2efe91384414395e8ec4f",
+            "guid": "c7249eb8-d692-4552-a31b-ea8db2c77286"
+        },
+        {
+            "sessioncacheid": "18",
+            "cachevaluetext": "#-#SessionId#-#1775122504#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.23.49#-#SessionKey#-#4556d9a90372d161d5a3fffce00ac88d",
+            "guid": "64b981cf-32fe-434c-a654-0345fe3df99a"
+        },
+        {
+            "sessioncacheid": "19",
+            "cachevaluetext": "#-#SessionId#-#1775122504#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.23.49#-#SessionKey#-#de90232b92b2efe91384414395e8ec4f#-#SessionLastAccessed#-#12/27/2025 12:00:02 AM",
+            "guid": "b8fac43e-90dd-4386-8c9f-daf2f84fdbe7"
+        },
+        {
+            "sessioncacheid": "20",
+            "cachevaluetext": "#-#SessionId#-#1775122504#-#SessionCreated#-#12/27/2025 12:00:02 AM#-#IP#-#172.31.23.49#-#SessionKey#-#4556d9a90372d161d5a3fffce00ac88d#-#SessionLastAccessed#-#12/27/2025 12:00:02 AM",
+            "guid": "f8eb459a-823e-4121-b996-446f931bfd03"
+        }
+    ]
+}

@@ -1,0 +1,99 @@
+{
+    "object": {
+        "name": "obms_plancost",
+        "id": "2029250284"
+    },
+    "data": [
+        {
+            "plancostid": "3",
+            "planid": "1",
+            "prodid": "4",
+            "plancostamtmnth": "100.00",
+            "guid": "18468a23-7045-4fb9-af8c-e46fa1e8c85c"
+        },
+        {
+            "plancostid": "4",
+            "planid": "2",
+            "prodid": "4",
+            "plancostamtmnth": "200.00",
+            "guid": "6b2f507a-2644-4ea5-8612-5e1fdb965589"
+        },
+        {
+            "plancostid": "5",
+            "planid": "3",
+            "prodid": "4",
+            "plancostamtmnth": "500.00",
+            "guid": "ed4ef1d5-ac19-490b-9eea-81470f568cc7"
+        },
+        {
+            "plancostid": "6",
+            "planid": "4",
+            "prodid": "4",
+            "plancostamtmnth": "1,900.00",
+            "guid": "8ff14c00-68f2-4264-aef2-971ab8e5951d"
+        },
+        {
+            "plancostid": "7",
+            "planid": "5",
+            "prodid": "4",
+            "plancostamtmnth": "300.00",
+            "guid": "71269492-d02a-4663-97a0-9d23e12b9e88"
+        },
+        {
+            "plancostid": "8",
+            "planid": "6",
+            "prodid": "4",
+            "plancostamtmnth": "500.00",
+            "guid": "28674957-3fdb-467b-9e40-e30009ff7a26"
+        },
+        {
+            "plancostid": "9",
+            "planid": "7",
+            "prodid": "4",
+            "plancostamtmnth": "1,000.00",
+            "guid": "b9ca796d-f77f-427b-ab58-0d19c06c4601"
+        },
+        {
+            "plancostid": "10",
+            "planid": "8",
+            "prodid": "4",
+            "plancostamtmnth": "3,500.00",
+            "guid": "6e50a6b0-c791-423e-8d92-7d993a76f8c3"
+        },
+        {
+            "plancostid": "11",
+            "planid": "9",
+            "prodid": "3",
+            "plancostamtmnth": "25.00",
+            "guid": "8c13e0cf-4f30-4d77-86dc-196bc75bb637"
+        },
+        {
+            "plancostid": "12",
+            "planid": "10",
+            "prodid": "3",
+            "plancostamtmnth": "50.00",
+            "guid": "d1bb40be-6ded-4db6-8e47-b69250fc160e"
+        },
+        {
+            "plancostid": "13",
+            "planid": "11",
+            "prodid": "3",
+            "plancostamtmnth": "125.00",
+            "guid": "fead2dc5-50c1-4cb7-90aa-c5c7759eef0a"
+        },
+        {
+            "plancostid": "14",
+            "planid": "12",
+            "prodid": "3",
+            "plancostamtmnth": "500.00",
+            "guid": "8c5b5ca8-d53c-4527-86ff-3e65e6f6dd2b"
+        },
+        {
+            "plancostid": "15",
+            "planid": "13",
+            "prodid": "3",
+            "plancostamtmnth": "2,500.00",
+            "guid": "b23b9731-3fc2-4baf-84bb-8e44da756b3c"
+        }
+    ]
+}

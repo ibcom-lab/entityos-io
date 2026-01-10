@@ -1,0 +1,23 @@
+{
+    "object": {
+        "name": "agri_net_relationshipstatus",
+        "id": "320720195"
+    },
+    "data": [
+        {
+            "statusid": "1",
+            "value": "Approved",
+            "guid": "d6ed73f8-eaaa-4175-982f-72ef0395e75b"
+        },
+        {
+            "statusid": "2",
+            "value": "Not Approved",
+            "guid": "e0d286c7-6bb1-4e1e-9971-c9ec622130d5"
+        },
+        {
+            "statusid": "3",
+            "value": "Approval Suspended",
+            "guid": "6bd1c76c-20ef-4f14-8bbc-f0de682df954"
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "object": {
+        "name": "perf_dashboardindicator",
+        "id": "919010355"
+    },
+    "data": [
+        {
+            "dashboardindicatorid": "1",
+            "dashboardid": "1",
+            "indicatorid": "1",
+            "rowposition": "1",
+            "colposition": "1",
+            "title": "",
+            "guid": "2a68f3fa-8750-4fc3-b13e-bfa52202819b"
+        },
+        {
+            "dashboardindicatorid": "2",
+            "dashboardid": "1",
+            "indicatorid": "2",
+            "rowposition": "1",
+            "colposition": "2",
+            "title": "",
+            "guid": "98cf5062-6526-4eb8-8c35-ad91da88926c"
+        },
+        {
+            "dashboardindicatorid": "3",
+            "dashboardid": "1",
+            "indicatorid": "3",
+            "rowposition": "2",
+            "colposition": "1",
+            "title": "",
+            "guid": "17573dca-d1ae-4156-9eb8-6e4a7a06b36e"
+        },
+        {
+            "dashboardindicatorid": "4",
+            "dashboardid": "1",
+            "indicatorid": "4",
+            "rowposition": "2",
+            "colposition": "2",
+            "title": "",
+            "guid": "ffd94bb0-f3c5-4f8e-a77e-f82a7953864d"
+        }
+    ]
+}

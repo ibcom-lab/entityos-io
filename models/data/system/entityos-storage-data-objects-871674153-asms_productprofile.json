@@ -1,0 +1,50 @@
+{
+    "object": {
+        "name": "asms_productprofile",
+        "id": "871674153"
+    },
+    "data": [
+        {
+            "productprofileid": "1",
+            "productid": "12",
+            "profileattribute": "14",
+            "value": "18",
+            "guid": "ef881dfd-18b9-4060-b8d2-eb1e5246e296"
+        },
+        {
+            "productprofileid": "2",
+            "productid": "12",
+            "profileattribute": "16",
+            "value": "25",
+            "guid": "10df111d-8b9b-4e96-927d-7f82e0c162e9"
+        },
+        {
+            "productprofileid": "7",
+            "productid": "18",
+            "profileattribute": "44",
+            "value": "c:\\application\\ops_prod\\extract\\",
+            "guid": "438213ce-3c9d-44ce-b993-821344eb142d"
+        },
+        {
+            "productprofileid": "8",
+            "productid": "18",
+            "profileattribute": "53",
+            "value": "c:\\attachments\\cache\\",
+            "guid": "a6ae8c91-e6b4-4ea9-8ef9-a3df36ba229f"
+        },
+        {
+            "productprofileid": "9",
+            "productid": "18",
+            "profileattribute": "43",
+            "value": "c:\\attachments\\",
+            "guid": "934245c1-433a-4422-8948-aa8f40fc095d"
+        },
+        {
+            "productprofileid": "5",
+            "productid": "23",
+            "profileattribute": "56",
+            "value": "c:\\application\\ops_prod\\extract\\",
+            "guid": "9a2e17c6-f223-4257-b22a-3d3ae3d48fc9"
+        }
+    ]
+}

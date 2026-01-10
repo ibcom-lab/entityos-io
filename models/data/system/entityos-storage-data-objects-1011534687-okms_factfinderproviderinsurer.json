@@ -1,0 +1,80 @@
+{
+    "object": {
+        "name": "okms_factfinderproviderinsurer",
+        "id": "1011534687"
+    },
+    "data": [
+        {
+            "providerinsurerid": "1",
+            "providerid": "19",
+            "insurerid": "2",
+            "providercode": "",
+            "companyid": "",
+            "guid": "cf6221e9-5e62-4b65-b4c6-be2de4e05558"
+        },
+        {
+            "providerinsurerid": "2",
+            "providerid": "19",
+            "insurerid": "24",
+            "providercode": "",
+            "companyid": "",
+            "guid": "9fedb6b4-01b2-4159-acf2-4557405c2cfc"
+        },
+        {
+            "providerinsurerid": "3",
+            "providerid": "19",
+            "insurerid": "16",
+            "providercode": "",
+            "companyid": "",
+            "guid": "5445f796-4b07-4f9d-ad24-2ba4a102a959"
+        },
+        {
+            "providerinsurerid": "4",
+            "providerid": "19",
+            "insurerid": "35",
+            "providercode": "",
+            "companyid": "",
+            "guid": "045e933d-cedc-455b-9576-e3d4b467ffc9"
+        },
+        {
+            "providerinsurerid": "5",
+            "providerid": "19",
+            "insurerid": "5",
+            "providercode": "",
+            "companyid": "",
+            "guid": "1b3e6d88-b52a-48e5-af48-892284e70fa7"
+        },
+        {
+            "providerinsurerid": "6",
+            "providerid": "19",
+            "insurerid": "7",
+            "providercode": "",
+            "companyid": "",
+            "guid": "a2aea08b-b4b0-4ac7-8af3-0f3681ddbd0d"
+        },
+        {
+            "providerinsurerid": "7",
+            "providerid": "19",
+            "insurerid": "9",
+            "providercode": "",
+            "companyid": "",
+            "guid": "de9585e1-4112-40f3-a04d-8375eb4f2137"
+        },
+        {
+            "providerinsurerid": "9",
+            "providerid": "19",
+            "insurerid": "15",
+            "providercode": "",
+            "companyid": "",
+            "guid": "f95d0084-9537-4a9a-add1-ed92bb80d239"
+        },
+        {
+            "providerinsurerid": "8",
+            "providerid": "19",
+            "insurerid": "12",
+            "providercode": "",
+            "companyid": "",
+            "guid": "a439fc24-1a0c-4123-8f92-48c70286e822"
+        }
+    ]
+}

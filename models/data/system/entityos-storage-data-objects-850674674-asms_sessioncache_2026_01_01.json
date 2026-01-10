@@ -1,0 +1,108 @@
+{
+    "object": {
+        "name": "asms_sessioncache_2026_01_01",
+        "id": "850674674"
+    },
+    "data": [
+        {
+            "sessioncacheid": "1",
+            "cachevaluetext": "#-#SessionId#-#1777039978#-#SessionCreated#-#1/1/2026#-#SessionKey#-#566a66f4792b972bb79e151046299f92#-#StoreSession#-#True",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "2",
+            "cachevaluetext": "#-#SessionId#-#1777039979#-#SessionCreated#-#1/1/2026#-#SessionKey#-#ceb840a5c7f5e5672c49919ffbd22fb0#-#StoreSession#-#True#-#SessionLastAccessed#-#12/31/2025 11:59:59 PM#-#ShopSite#-##-#transfer:context:stub#-#/CDGServer3#-#transfer:context#-#&#39;SystemConfig&#39;#-#transfer:context:raw#-#SystemConfig#-#sourcetype#-#SystemConfig#-#transfer:context:raw:id#-#SystemConfig",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "3",
+            "cachevaluetext": "#-#SessionId#-#1777039980#-#SessionCreated#-#1/1/2026#-#SessionKey#-#ee6bd2e0e4dc4b69ac46ed20b74d709e#-#StoreSession#-#True#-#SessionLastAccessed#-#12/31/2025 11:59:59 PM#-#ShopSite#-##-#transfer:context:stub#-#/manager#-#transfer:context#-#&#39;html&#39;#-#transfer:context:raw#-#html#-#sourcetype#-#html#-#transfer:context:raw:id#-#html",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "4",
+            "cachevaluetext": "#-#SessionId#-#1777039977#-#SessionCreated#-#1/1/2026#-#SessionKey#-#6061322044ba509a8070312beaf4c17f#-#StoreSession#-#True#-#SessionLastAccessed#-#12/31/2025 11:59:57 PM#-#ShopSite#-##-#transfer:context:stub#-#/CDGServer3#-#transfer:context#-#&#39;SystemConfig&#39;#-#transfer:context:raw#-#SystemConfig#-#sourcetype#-#SystemConfig#-#transfer:context:raw:id#-#SystemConfig",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "5",
+            "cachevaluetext": "#-#SessionId#-#1777039981#-#SessionCreated#-#1/1/2026#-#SessionKey#-#5a3f4106a14ae7306ac4b1c26ccdde76#-#StoreSession#-#True#-#SessionLastAccessed#-#12/31/2025 11:59:59 PM#-#ShopSite#-##-#transfer:context:stub#-#/CDGServer3#-#transfer:context#-#&#39;SystemConfig&#39;#-#transfer:context:raw#-#SystemConfig#-#sourcetype#-#SystemConfig#-#transfer:context:raw:id#-#SystemConfig",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "6",
+            "cachevaluetext": "#-#SessionId#-#1777039988#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.40.154#-#SessionKey#-#ebdc91aebb3f7eb447f0812a33b8daef",
+            "guid": "f6a8d8b7-2e99-4ca0-aac7-81c074579033"
+        },
+        {
+            "sessioncacheid": "7",
+            "cachevaluetext": "#-#SessionId#-#1777039988#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.40.154#-#SessionKey#-#ebdc91aebb3f7eb447f0812a33b8daef#-#SessionLastAccessed#-#1/1/2026 12:00:00 AM",
+            "guid": "59c9a8fc-b2db-448f-927d-16e1dcd01f57"
+        },
+        {
+            "sessioncacheid": "8",
+            "cachevaluetext": "#-#SessionId#-#1777039988#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.40.154#-#SessionKey#-#a8cdc78e4cd6b58fb7bd6871160e9e89",
+            "guid": "e85c7928-6b16-4599-a3b8-2dc58c21c25b"
+        },
+        {
+            "sessioncacheid": "9",
+            "cachevaluetext": "#-#SessionId#-#1777039988#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.40.154#-#SessionKey#-#a8cdc78e4cd6b58fb7bd6871160e9e89#-#SessionLastAccessed#-#1/1/2026 12:00:00 AM",
+            "guid": "080f172a-824c-4802-bbfe-cdde987a0e5f"
+        },
+        {
+            "sessioncacheid": "10",
+            "cachevaluetext": "#-#SessionId#-#1777039986#-#SessionCreated#-#1/1/2026#-#SessionKey#-#e7d226f81b6760fdc50537ad426da685#-#StoreSession#-#True#-#SessionLastAccessed#-#12/31/2025 11:59:59 PM#-#ShopSite#-##-#transfer:context:stub#-#/manager#-#transfer:context#-#&#39;html&#39;#-#transfer:context:raw#-#html#-#sourcetype#-#html#-#transfer:context:raw:id#-#html",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "11",
+            "cachevaluetext": "#-#SessionId#-#1777039982#-#SessionCreated#-#1/1/2026#-#SessionKey#-#acc6463a0ec5d8becc720f9d310ecdd6#-#StoreSession#-#True",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "12",
+            "cachevaluetext": "#-#SessionId#-#1777039989#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.33.226#-#SessionKey#-#412aa79fa0b6ecf755cf69017e4ecd8d",
+            "guid": "b6608c38-b4f5-4779-ac48-ef8f0df733e0"
+        },
+        {
+            "sessioncacheid": "13",
+            "cachevaluetext": "#-#SessionId#-#1777039989#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.33.226#-#SessionKey#-#412aa79fa0b6ecf755cf69017e4ecd8d#-#SessionLastAccessed#-#1/1/2026 12:00:00 AM",
+            "guid": "6c442cce-8721-465d-b4fa-39bd1dbf9f26"
+        },
+        {
+            "sessioncacheid": "14",
+            "cachevaluetext": "#-#SessionId#-#1777039985#-#SessionCreated#-#1/1/2026#-#SessionKey#-#db74c6a8978ec1383275dc2d26502f0a#-#StoreSession#-#True#-#SessionLastAccessed#-#12/31/2025 11:59:59 PM#-#ShopSite#-##-#transfer:context:stub#-#/manager#-#transfer:context#-#&#39;html&#39;#-#transfer:context:raw#-#html#-#sourcetype#-#html#-#transfer:context:raw:id#-#html",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "15",
+            "cachevaluetext": "#-#SessionId#-#1777039990#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.33.226#-#SessionKey#-#787d0db84922508c650458cc55faf87e",
+            "guid": "ed2173a3-2cfe-4834-8a88-e2d58c9eafd4"
+        },
+        {
+            "sessioncacheid": "16",
+            "cachevaluetext": "#-#SessionId#-#1777039990#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.33.226#-#SessionKey#-#787d0db84922508c650458cc55faf87e#-#SessionLastAccessed#-#1/1/2026 12:00:00 AM",
+            "guid": "5bd8ca4e-24fa-4ae0-96eb-581214c6fc97"
+        },
+        {
+            "sessioncacheid": "17",
+            "cachevaluetext": "#-#SessionId#-#1777039984#-#SessionCreated#-#1/1/2026#-#SessionKey#-#e12fd75443a6ca31d32ddd8fbad406d1#-#StoreSession#-#True",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "18",
+            "cachevaluetext": "#-#SessionId#-#1777039983#-#SessionCreated#-#1/1/2026#-#SessionKey#-#db74c6a8978ec1383275dc2d26502f0a#-#StoreSession#-#True",
+            "guid": ""
+        },
+        {
+            "sessioncacheid": "19",
+            "cachevaluetext": "#-#SessionId#-#1777039994#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.0.199#-#SessionKey#-#c810bb2d7e87d54b5ab09af16c356e2c",
+            "guid": "02636fc6-7314-4bc1-ae15-12e143224f2a"
+        },
+        {
+            "sessioncacheid": "20",
+            "cachevaluetext": "#-#SessionId#-#1777039994#-#SessionCreated#-#1/1/2026 12:00:00 AM#-#IP#-#172.31.0.199#-#SessionKey#-#c810bb2d7e87d54b5ab09af16c356e2c#-#SessionLastAccessed#-#1/1/2026 12:00:00 AM",
+            "guid": "123e163f-63a8-484b-b3a6-2c7ee35f9d29"
+        }
+    ]
+}
