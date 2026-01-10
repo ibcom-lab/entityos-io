@@ -21,7 +21,7 @@ permalink: /models/
 
 |ID|Name|Notes|
 |:--:|:---:|:-----|
-|1|Audit|Not 2,3 or 4 Deprecated|
+|1|Audit|Deprecated|
 |2|Core|SEC_|
 |3|System|No Space ID|
 |4|Space|Has Space ID|
