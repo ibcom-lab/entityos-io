@@ -6,6 +6,13 @@ permalink: /continuity/
 
 ## Continuity
 
+### Modes:
+
+1. Export/Manual - provide the object, fields, filters etc
+2. Based on the entityOS interface object model to get method and fields (parameters)
+	- 2a. All objects or by object name
+	- 2b. Based on the entityOS tracking data, based on recorded lastbackupdate or manual sessionid.
+
 ### Methods:
 
 |Name|Notes|
