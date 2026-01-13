@@ -6,7 +6,7 @@ permalink: /continuity/
 
 ## Continuity
 
-**Methods:**
+### Methods:
 
 |Name|Notes|
 |:--:|:---:|
@@ -17,4 +17,8 @@ permalink: /continuity/
 |continuity-backup-data|This is the code you use to get tracking data (what has change) and back it up to local or s3.|
 |continuity-util-model-get||
 |continuity-backup-object-data|This is the code you use to get data and save to your local code|
+
+### Resources:
+
+- [Continuity](https://github.com/ibcom-lab/entityos-learn-continuity)
 
