@@ -13,6 +13,11 @@ permalink: /continuity/
 	- 2a. All objects or by object name
 	- 2b. Based on the entityOS tracking data, based on recorded lastbackupdate or manual sessionid.
 
+### Export Formats:
+
+1. Space Template (template: true)
+2. Object Data
+
 ### Methods:
 
 |Name|Notes|
