@@ -1,0 +1,51 @@
+title: "Learn entityOS"
+description: "A cloud operating system for entities — Individuals, Organisations, Collectives & DAOs."
+url: "https://learn.entityos.cloud"
+baseurl: ""
+
+# Author
+author:
+  name: "ibCom"
+  email: "hello@entityos.cloud"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: entityos
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: guide
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+
+# Collections (optional, for structured content)
+collections:
+  guides:
+    output: true
+    permalink: /:name
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO
+twitter:
+  username: entityos

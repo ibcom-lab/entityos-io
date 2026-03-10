@@ -1,0 +1,70 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <a href="{{ '/' | relative_url }}" aria-label="{{ site.title | default: 'Learn entityOS' }} home">
+        <div class="footer-logo">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="9" fill="white" fill-opacity="0.12"/>
+            <path d="M9 18C9 13.029 13.029 9 18 9C22.971 9 27 13.029 27 18C27 22.971 22.971 27 18 27C13.029 27 9 22.971 9 18Z" fill="white" fill-opacity="0.15"/>
+            <path d="M13 18C13 15.239 15.239 13 18 13C20.761 13 23 15.239 23 18C23 20.761 20.761 23 18 23C15.239 23 13 20.761 13 18Z" fill="white"/>
+            <circle cx="18" cy="18" r="2.5" fill="#0052CC"/>
+          </svg>
+        </div>
+      </a>
+      <p class="footer-tagline">A cloud operating system<br>for all types of entities.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul role="list">
+          <li><a href="{{ '/learn-quick-start' | relative_url }}">Quick Start</a></li>
+          <li><a href="{{ '/learn-quick-start-form' | relative_url }}">Form</a></li>
+          <li><a href="{{ '/learn-quick-start-function' | relative_url }}">Function</a></li>
+          <li><a href="{{ '/learn-quick-start-storage' | relative_url }}">Storage</a></li>
+          <li><a href="{{ '/schema' | relative_url }}">Query Builder</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Guides</h4>
+        <ul role="list">
+          <li><a href="{{ '/learn-quick-start-design' | relative_url }}">Designing</a></li>
+          <li><a href="{{ '/learn-quick-start-build' | relative_url }}">Building</a></li>
+          <li><a href="{{ '/learn-quick-start-security' | relative_url }}">Security</a></li>
+          <li><a href="{{ '/learn-function-automation' | relative_url }}">Automation</a></li>
+          <li><a href="{{ '/learn-quick-start-on-chain' | relative_url }}">On-Chain</a></li>
+          <li><a href="{{ '/learn-facilitator' | relative_url }}">Facilitating</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul role="list">
+          <li><a href="https://docs.entityos.cloud" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://github.com/ibcom-lab/entityos-sdk" target="_blank" rel="noopener">SDK</a></li>
+          <li><a href="https://github.com/ibcom-lab/entityos-learn-ai" target="_blank" rel="noopener">AI Examples</a></li>
+          <li><a href="{{ '/certification' | relative_url }}">Certification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>entityOS</h4>
+        <ul role="list">
+          <li><a href="https://console.entityos.cloud" target="_blank" rel="noopener">Console</a></li>
+          <li><a href="mailto:hello@entityos.cloud">Contact Us</a></li>
+          <li><a href="https://docs.entityos.cloud/terms" target="_blank" rel="noopener">Terms of Service</a></li>
+          <li><a href="https://docs.entityos.cloud/privacy" target="_blank" rel="noopener">Privacy</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+  <div class="footer-base">
+    <p>Copyright ibCom {{ 'now' | date: "%Y" }} &middot; Built with <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a></p>
+    <div class="footer-theme-toggle">
+      <button id="theme-toggle" aria-label="Toggle colour theme">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 016.5 2.5a5.5 5.5 0 000 11 5.5 5.5 0 007-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
