@@ -1,3 +1,8 @@
+---
+layout: default
+title: "entityOS.io"
+description: "A cloud operating system for entities — Individuals, Organisations, Collectives & DAOs."
+---
 # A cloud operating system for entities.
 **INDIVIDUALS, ORGANISATIONS, COLLECTIVES & DAOS**
 
