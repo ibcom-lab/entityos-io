@@ -1,5 +1,5 @@
 ---
-layout: guide
+layout: entityos
 title: Continuity - entityOS.io
 permalink: /continuity/
 ---
