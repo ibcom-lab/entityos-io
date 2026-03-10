@@ -1,7 +1,3 @@
----
-layout: entityos
-title: entityOS.io
----
 # A cloud operating system for entities.
 **INDIVIDUALS, ORGANISATIONS, COLLECTIVES & DAOS**
 
