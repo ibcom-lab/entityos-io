@@ -13,6 +13,9 @@ description: "A cloud operating system for entities — Individuals, Organisatio
 - [On-Chain](https://github.com/ibcom-lab/entityos-learn-onchain)
 - [AI](https://github.com/ibcom-lab/entityos-learn-ai)
 
+### Security
+- [Security - Stage 1 - IP](/security/stage-1-ip)
+
 ### Services
 - [entityOS.cloud](https://entityos.cloud)
 
