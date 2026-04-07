@@ -359,7 +359,7 @@ tr:last-child td { border-bottom: none; }
 .s-next .section-header .subhead { color: rgba(255,255,255,0.3); }
 .s-next .section-header .display-2 { color: #fff; }
 .s-next .section-header p { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 300; color: rgba(255,255,255,0.4); max-width: 700px; margin: 2rem auto 0; line-height: 1.7; }
-.roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 6rem; }
+.roadmap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-bottom: 6rem; }
 .roadmap-stage { padding: 3.6rem 3rem; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); position: relative; }
 .roadmap-stage.current { background: rgba(57,181,74,0.06); border-color: rgba(57,181,74,0.3); }
 .roadmap-stage.current::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #39b54a; }
@@ -990,7 +990,7 @@ aws elbv2 modify-listener   --listener-arn <span class="st">arn:aws:elasticloadb
   <div class="inner">
     <div class="section-header">
       <p class="subhead">The Road Ahead</p>
-      <h2 class="display-2 display-2--light">Stage 2 proves identity.<br>Stage 3 automates it at scale.</h2>
+      <h2 class="display-2 display-2--light">Stage 2 proves identity.</h2>
       <p>mTLS with manually managed certificates works well up to hundreds of services. Beyond that — ephemeral containers, autoscaling fleets, multi-cloud — you need automated workload identity. That's Stage 3.</p>
     </div>
 
@@ -1011,14 +1011,7 @@ aws elbv2 modify-listener   --listener-arn <span class="st">arn:aws:elasticloadb
         <h4>mTLS + X.509 Identity</h4>
         <p>Cryptographic identity for every connection. Both sides prove who they are with a certificate before any data flows.</p>
       </div>
-      <div class="roadmap-stage reveal">
-        <div class="roadmap-badge">
-          <span class="roadmap-badge-num">03</span>
-          <span class="roadmap-status">Next Stage</span>
-        </div>
-        <h4>SPIFFE / SPIRE</h4>
-        <p>Automated workload identity at scale. Short-lived SVIDs issued to every running workload — no human involvement, zero-touch cert lifecycle.</p>
-      </div>
+      
     </div>
 
     <div class="key-box">
