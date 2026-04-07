@@ -479,7 +479,7 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
         </ul>
         <div class="oc-note">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          Viable at scale with SPIFFE/SPIRE, mTLS, and cryptographic identity infrastructure.
+          Viable at scale with mTLS and cryptographic identity infrastructure.
         </div>
       </div>
     </div>
@@ -578,7 +578,7 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
           Identity Walls
         </div>
         <h4>Close the attack surface</h4>
-        <p>AI-driven attack tools can only exploit what they can reach. Cryptographic identity — enforced via IP allowlisting, mTLS, and SPIFFE workload identity — closes the attack surface before the scan can begin. A service that requires a certificate cannot be reached by an anonymous AI probe.</p>
+        <p>AI-driven attack tools can only exploit what they can reach. Cryptographic identity — enforced via IP allowlisting and mTLS — closes the attack surface before the scan can begin. A service that requires a certificate cannot be reached by an anonymous AI probe.</p>
       </div>
       <div class="response-card reveal">
         <div class="response-eyebrow">
@@ -586,7 +586,7 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
           Continuous Rotation
         </div>
         <h4>Short-lived credentials everywhere</h4>
-        <p>When AI can find and exploit a vulnerability in hours, long-lived credentials become liabilities. Short-lived SPIFFE SVIDs — rotated automatically every 1–24 hours — limit the window of exposure for any credential compromise to hours, not months.</p>
+        <p>When AI can find and exploit a vulnerability in hours, long-lived credentials become liabilities. Short-lived credentials — rotated automatically every 1–24 hours — limit the window of exposure for any credential compromise to hours, not months.</p>
       </div>
     </div>
   </div>
@@ -620,15 +620,6 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
           <span class="trust-title">mTLS + X.509 Identity</span>
           <span class="trust-desc">Add cryptographic identity to every connection. Every caller must present a certificate signed by your CA — anonymous connections are rejected before any application logic is touched. Even actors inside the network boundary must prove who they are, not just where they are.</span>
           <span class="trust-tag"><a href="/security/stage-2-mtls" style="color:inherit;text-decoration:none;">Read Guide →</a></span>
-        </div>
-      </div>
-      <div class="trust-layer reveal">
-        <div class="trust-accent"></div>
-        <div class="trust-body">
-          <span class="trust-num">STAGE 03</span>
-          <span class="trust-title">Full Zero Trust / SPIFFE</span>
-          <span class="trust-desc">Extend cryptographic identity to every workload, every request. SPIFFE SVIDs are issued automatically at startup, rotated continuously, and verified at every hop. There is no trusted perimeter — identity and authorisation policy are the only gates. This is the closed internet in full operation.</span>
-          <span class="trust-tag">Coming Soon</span>
         </div>
       </div>
     </div>
@@ -720,7 +711,7 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
 
     <div class="key-box">
       <h5>entityOS Position</h5>
-      <p>The appropriate response to the Glasswing moment is to accelerate, not wait. <strong>Stage 1</strong> — IP allowlisting — can be deployed today. <strong>Stage 2</strong> — mTLS with X.509 identity — should be in planning this quarter. <strong>Stage 3</strong> — SPIFFE/SPIRE workload identity — defines the architecture every new service should be designed for. The organisations that move now will be the ones that maintain a <strong>defender advantage</strong> as AI capabilities continue to advance.</p>
+      <p>The appropriate response to the Glasswing moment is to accelerate, not wait. <strong>Stage 1</strong> — IP allowlisting — can be deployed today. <strong>Stage 2</strong> — mTLS with X.509 identity — should be in planning this quarter. The organisations that move now will be the ones that maintain a <strong>defender advantage</strong> as AI capabilities continue to advance.</p>
     </div>
 
     <div class="conclusion-links">
