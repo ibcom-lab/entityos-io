@@ -106,7 +106,7 @@ strong, b { font-weight: 700; }
 ===================================================== */
 .s-home {
   width: 100%; min-height: 100vh; background: #0c0c0c;
-  position: relative; display: flex; align-items: flex-end; overflow: hidden;
+  position: relative; display: flex; align-items: center; overflow: hidden;
 }
 .s-home .overlay { position: absolute; inset: 0; opacity: .65; background: #000; z-index: 0; }
 .s-home .bg-grid {
@@ -133,7 +133,7 @@ strong, b { font-weight: 700; }
 }
 .stage-badge span { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2rem; color: #39b54a; }
 
-.home-content { position: relative; z-index: 1; width: 100%; padding: 0 40px 15.6rem; max-width: 1040px; }
+.home-content { position: relative; z-index: 1; width: 100%; padding: 11rem 40px 8rem; max-width: 1040px; }
 .home-content__subhead {
   font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: .3rem; color: #39b54a;
@@ -400,10 +400,17 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
   .impl-tag { margin-left: 0; }
 }
 @media (max-width: 800px) {
-  html { font-size: 9px; }
+  html { font-size: 9px; 
+  .home-content h1 { font-size: 3.6rem; }
+  .home-content__sub { font-size: 1.6rem; }
+  .home-content__buttons { display: flex; flex-direction: column; gap: 1.2rem; }
+  .btn { margin-right: 0; width: 100%; max-width: 340px; }
+  .home-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3.2rem; margin-top: 3.2rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
   .s-header { padding: 0 24px; }
   .header-nav-inline { display: none; }
-  .home-content { padding: 0 24px 12rem; }
+  .home-content { padding: 12rem 24px 6rem; }
   .home-content h1 { font-size: 4rem; }
   .home-content__scroll, .home-content__line { display: none; }
   .tls-compare { grid-template-columns: 1fr; }
@@ -418,7 +425,11 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
   .home-meta { flex-direction: column; gap: 1.6rem; }
 }
 @media (max-width: 500px) {
-  .about-features { grid-template-columns: 1fr; }
+  .about-features { grid-template-columns: 1fr; 
+  .home-content h1 { font-size: 3rem; }
+  .home-meta { grid-template-columns: 1fr; }
+
+}
   .cert-grid { grid-template-columns: 1fr; }
 }
 </style>
