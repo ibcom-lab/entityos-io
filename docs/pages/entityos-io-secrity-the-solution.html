@@ -268,6 +268,24 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
   .home-content h1 { font-size: 3rem; }
   .home-meta { grid-template-columns: 1fr; }
 }
+
+/* ── AUDIO PLAYER ── */
+.audio-player {
+  margin-top: 3.6rem;
+  animation: fadeSlideUp 1s 1.3s ease forwards; opacity: 0;
+}
+.audio-label {
+  font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .2rem;
+  color: rgba(255,255,255,0.3); display: flex; align-items: center; gap: .8rem;
+  margin-bottom: 1rem;
+}
+.audio-label svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.3); stroke-width: 2; fill: none; }
+.audio-player audio {
+  width: 100%; max-width: 560px; height: 36px;
+  border-radius: 2px; accent-color: #39b54a;
+  filter: invert(1) brightness(0.6) sepia(1) hue-rotate(90deg) saturate(2);
+}
 </style>
 </head>
 <body>
@@ -330,6 +348,17 @@ footer::before { content: ''; display: block; height: 1px; width: 100%; backgrou
         <span class="home-meta-label">Outcome</span>
         <span class="home-meta-val">AI-ready infrastructure</span>
       </div>
+    </div>
+
+    <div class="audio-player">
+      <div class="audio-label">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        Listen — entityOS Abandons the Open Internet
+      </div>
+      <audio controls preload="none">
+        <source src="https://raw.githubusercontent.com/ibcom-lab/entityos-io/main/docs/assets/audio/entityos-io-security-entityos-abandons-the-open-internet.m4a" type="audio/mp4">
+        Your browser does not support the audio element.
+      </audio>
     </div>
   </div>
 
