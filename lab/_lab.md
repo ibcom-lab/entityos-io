@@ -1,0 +1,1 @@
+see entityos-io-register repo for registration code
