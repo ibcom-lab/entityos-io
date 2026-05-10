@@ -1,5 +1,5 @@
 ---
-layout: entityos
+layout: default
 title: IMF - entityOS.io
 subtitle: Financial Stability Risks in the Age of Machine-Speed Adversaries
 permalink: /research/imf
