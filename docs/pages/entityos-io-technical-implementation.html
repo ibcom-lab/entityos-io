@@ -1,0 +1,664 @@
+---
+layout: null
+title: Technical - Implementation - entityOS.io
+permalink: /security/implementation/technical
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implementation Guide — entityOS Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 10px; scroll-behavior: smooth; }
+body { font-family: 'Lora', serif; font-size: 1.7rem; line-height: 1.765; color: #757575; background: #111; overflow-x: hidden; }
+a { color: #0087cc; text-decoration: none; }
+
+#progress { position: fixed; top: 0; left: 0; height: 4px; z-index: 900; background: #39b54a; width: 0; transition: width 0.1s; }
+
+.s-header { width: 100%; height: 88px; background: transparent; position: fixed; top: 0; z-index: 500; display: flex; align-items: center; padding: 0 48px; justify-content: space-between; transition: background 0.3s; }
+.s-header.opaque { background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+.header-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2rem; color: #39b54a; }
+.header-nav { display: flex; align-items: center; gap: 3.2rem; list-style: none; }
+.header-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .2rem; color: rgba(255,255,255,0.6); }
+.header-nav a:hover { color: #fff; }
+.btn-nav { background: #39b54a !important; color: #fff !important; padding: .9rem 2.4rem; border-radius: 2px; }
+
+.row { width: 94%; max-width: 1160px; margin: 0 auto; }
+
+.subhead { font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: .28rem; }
+.subhead--green { color: #39b54a; }
+.subhead--dim { color: rgba(255,255,255,0.28); }
+.subhead--dark { color: rgba(0,0,0,0.42); }
+.display-2 { font-family: 'Montserrat', sans-serif; font-size: 4.2rem; font-weight: 500; line-height: 1.2; letter-spacing: -.05rem; color: #000; }
+.display-2--light { color: #fff; }
+
+.rev { opacity: 0; transform: translateY(18px); transition: opacity 0.5s, transform 0.5s; }
+.rev.on { opacity: 1; transform: none; }
+
+.btn { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: .25rem; height: 5.2rem; line-height: 4.8rem; padding: 0 2.8rem; color: #fff; border: .2rem solid #fff; background: transparent; transition: all 0.3s; }
+.btn:hover { background: #fff; color: #000; }
+.btn--primary { background: #39b54a; border-color: #39b54a; }
+.btn--primary:hover { background: #2ea03d; border-color: #2ea03d; color: #fff; }
+
+/* HERO */
+.s-hero { background: #0c0c0c; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 88px; }
+.s-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(57,181,74,0.07) 1px, transparent 1px); background-size: 30px 30px; }
+.hero-content { position: relative; z-index: 1; padding: 10rem 0 12rem; }
+.hero-label { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #39b54a; letter-spacing: .08rem; margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1rem; }
+.hero-label::before { content: ''; display: block; width: 28px; height: 2px; background: #39b54a; }
+.hero-h1 { font-family: 'Montserrat', sans-serif; font-size: 5.6rem; font-weight: 500; line-height: 1.15; letter-spacing: -.06rem; color: #fff; margin-bottom: 2.8rem; max-width: 780px; }
+.hero-h1 .green { color: #39b54a; }
+.hero-sub { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 300; color: rgba(255,255,255,0.42); line-height: 1.7; max-width: 640px; margin-bottom: 4.4rem; }
+.hero-ctas { display: flex; gap: 1.8rem; flex-wrap: wrap; align-items: center; }
+.scroll-line { position: absolute; right: 8rem; bottom: 5rem; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+.scroll-line span { font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 600; text-transform: uppercase; letter-spacing: .2rem; color: rgba(255,255,255,0.25); writing-mode: vertical-rl; }
+.green-bar { display: block; width: 2px; height: 8rem; background: #39b54a; }
+
+/* GREEN STRIP */
+.s-model { background: #39b54a; padding: 9rem 0 8rem; position: relative; overflow: hidden; }
+.s-model::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 26px 26px; }
+.model-header { text-align: center; margin-bottom: 5rem; position: relative; z-index: 1; }
+.model-header .display-2 { color: #010507; }
+.model-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; position: relative; z-index: 1; }
+.model-col { background: rgba(0,0,0,0.08); padding: 3.6rem 4rem; }
+.model-col-label { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2rem; margin-bottom: 1.6rem; }
+.label-open { color: rgba(0,0,0,0.45); }
+.label-restricted { color: rgba(0,0,0,0.8); }
+.model-col h3 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 700; color: #010507; margin-bottom: 1.2rem; }
+.model-col p { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 300; color: rgba(0,0,0,0.65); line-height: 1.65; margin-bottom: 2rem; }
+.model-col .domain { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; color: #010507; background: rgba(255,255,255,0.3); padding: .6rem 1.4rem; display: inline-block; margin-bottom: 2rem; }
+.model-col ul { list-style: none; }
+.model-col ul li { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 400; color: rgba(0,0,0,0.65); padding: .7rem 0; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; align-items: flex-start; gap: 1rem; }
+.model-col ul li:last-child { border-bottom: none; }
+.li-dot { color: #010507; font-weight: 700; flex-shrink: 0; }
+
+/* DIAGRAM */
+.s-diagram { background: #fff; padding: 10rem 0; }
+.s-diagram .section-header { margin-bottom: 5.6rem; }
+.section-header p { margin-top: 1.4rem; max-width: 580px; font-family: 'Montserrat', sans-serif; font-size: 1.55rem; font-weight: 300; color: #757575; line-height: 1.7; }
+.arch-diagram { width: 100%; background: #0a0a0a; padding: 4rem; border: 1px solid #1e1e1e; }
+.arch-svg { width: 100%; height: auto; display: block; }
+
+/* STAGES */
+.s-stages { background: #111111; padding: 10rem 0; }
+.s-stages .section-header { margin-bottom: 6rem; }
+.s-stages .section-header p { color: rgba(255,255,255,0.38); }
+.stage-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.stage { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 4rem; }
+.stage-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2.4rem; }
+.stage-num { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #39b54a; text-transform: uppercase; letter-spacing: .2rem; }
+.stage-duration { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: rgba(255,255,255,0.28); }
+.stage h3 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 600; color: #fff; margin-bottom: 1.2rem; }
+.stage-desc { font-family: 'Montserrat', sans-serif; font-size: 1.45rem; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.68; margin-bottom: 2.8rem; }
+.stage-steps { list-style: none; }
+.stage-steps li { display: flex; align-items: flex-start; gap: 1.2rem; font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: rgba(255,255,255,0.45); padding: .75rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.stage-steps li:last-child { border-bottom: none; }
+.step-tick svg { width: 13px; height: 13px; stroke: #39b54a; stroke-width: 2.5; fill: none; flex-shrink: 0; margin-top: .2rem; }
+
+/* COMPONENTS */
+.s-components { background: #e6e6e6; padding: 10rem 0; }
+.s-components .section-header { margin-bottom: 5.4rem; }
+.comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.comp-card { background: #fff; padding: 3.4rem; border-top: 3px solid #39b54a; }
+.comp-zone { font-family: 'JetBrains Mono', monospace; font-size: .95rem; color: #39b54a; text-transform: uppercase; letter-spacing: .1rem; margin-bottom: 1.4rem; }
+.comp-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 600; color: #000; margin-bottom: 1.2rem; }
+.comp-card p { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 300; color: #757575; line-height: 1.65; margin-bottom: 1.8rem; }
+.comp-items { list-style: none; }
+.comp-items li { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 500; color: #555; padding: .6rem 0; border-bottom: 1px solid #f0f0f0; display: flex; gap: .8rem; }
+.comp-items li:last-child { border-bottom: none; }
+.ci-dot { color: #39b54a; font-weight: 700; flex-shrink: 0; }
+
+/* FLOW */
+.s-flow { background: #151515; padding: 10rem 0; }
+.s-flow .section-header { margin-bottom: 5.4rem; }
+.s-flow .section-header p { color: rgba(255,255,255,0.35); }
+.flow-rows { display: flex; flex-direction: column; gap: 2px; }
+.flow-row { display: flex; align-items: stretch; }
+.flow-accent { width: 4px; background: #39b54a; flex-shrink: 0; }
+.flow-accent--red { background: #cc4444; }
+.flow-body { flex: 1; padding: 2.4rem 3.2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.flow-num { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #39b54a; min-width: 2.8rem; flex-shrink: 0; }
+.flow-num--red { color: #cc4444; }
+.flow-content { flex: 1; min-width: 200px; }
+.flow-title { font-family: 'Montserrat', sans-serif; font-size: 1.65rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+.flow-desc { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 300; color: rgba(255,255,255,0.38); line-height: 1.6; }
+.flow-tag { font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1rem; color: #39b54a; border: 1px solid rgba(57,181,74,0.3); padding: .4rem 1.1rem; white-space: nowrap; flex-shrink: 0; }
+.flow-tag--red { color: #cc4444; border-color: rgba(204,68,68,0.35); }
+
+/* CONCLUSION */
+.s-conclusion { background: #0c0c0c; padding: 14rem 0 10rem; position: relative; }
+.concl-line { display: block; width: 2px; height: 10rem; background: #39b54a; position: absolute; left: 50%; top: 0; margin-left: -1px; }
+.concl-inner { text-align: center; max-width: 640px; margin: 0 auto; }
+.concl-inner p { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 300; color: rgba(255,255,255,0.42); margin: 1.8rem 0 4rem; line-height: 1.75; }
+.concl-ctas { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; }
+.key-box { margin-top: 5.6rem; padding: 2.8rem 3.6rem; border-left: 4px solid #39b54a; background: rgba(0,0,0,0.3); font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.75; text-align: left; }
+.key-box strong { color: #39b54a; }
+
+footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.6rem; }
+.footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; color: rgba(57,181,74,0.65); }
+.footer-copy { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; color: rgba(255,255,255,0.18); line-height: 1.9; text-align: right; }
+.footer-copy a { color: rgba(255,255,255,0.22); }
+
+@media (max-width: 860px) {
+  .hero-h1 { font-size: 3.8rem; }
+  .model-cols, .stage-pair, .comp-grid { grid-template-columns: 1fr; }
+  .display-2 { font-size: 3rem; }
+  .s-header { padding: 0 24px; }
+  .arch-diagram { padding: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="s-header" id="site-header">
+  <div class="header-logo">entityOS</div>
+  <nav>
+    <ul class="header-nav">
+      <li><a href="#diagram">Architecture</a></li>
+      <li><a href="#stages">Stages</a></li>
+      <li><a href="#flow">Flow</a></li>
+      <li><a href="https://www.entityos.io/security/the-solution" class="btn-nav">The Solution</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="s-hero">
+  <div class="row hero-content">
+    <div class="hero-label">entityOS Security — CTO Implementation</div>
+    <h1 class="hero-h1 rev">Open to register.<br><span class="green">Restricted</span> to access.</h1>
+    <p class="hero-sub rev">Two zones. Two firewalls. One certificate authority. IP restriction and mTLS certificate identity can be deployed independently or combined — matched to the access pattern of each user type in your organisation.</p>
+    <div class="hero-ctas rev">
+      <a href="#diagram" class="btn btn--primary">See the Architecture</a>
+      <a href="#stages" class="btn">Implementation Stages</a>
+    </div>
+  </div>
+  <div class="scroll-line">
+    <span>Scroll</span>
+    <span class="green-bar"></span>
+  </div>
+</section>
+
+<!-- GREEN STRIP — THE TWO-ZONE MODEL -->
+<section class="s-model">
+  <div class="row">
+    <div class="model-header rev">
+      <p class="subhead subhead--dark">The Architecture</p>
+      <h2 class="display-2">Two zones. One user agent.</h2>
+    </div>
+    <div class="model-cols">
+      <div class="model-col rev">
+        <div class="model-col-label label-open">Zone 1 — Open</div>
+        <h3>register.entityos.io</h3>
+        <p>The intentionally public registration surface. A user agent visits here to submit their IP and certificate request. No identity required to reach this zone — it is the controlled onramp.</p>
+        <div class="domain">register.entityos.io</div>
+        <ul>
+          <li><span class="li-dot">→</span> Accepts IP address submissions + CSRs</li>
+          <li><span class="li-dot">→</span> Validates pre-exchanged unique security code</li>
+          <li><span class="li-dot">→</span> Writes to entityOS Storage</li>
+          <li><span class="li-dot">→</span> Process function: routes IP + cert requests</li>
+          <li><span class="li-dot">→</span> Access Firewall: Standard Rules only</li>
+        </ul>
+      </div>
+      <div class="model-col rev">
+        <div class="model-col-label label-restricted">Zone 2 — Restricted (Closed)</div>
+        <h3>entityos.cloud</h3>
+        <p>The protected application surface. The restricted firewall supports three rule types — Standard Rules, IP Set, and X.509 Certs — which can be enabled independently or together depending on the access pattern of the user or device.</p>
+        <div class="domain">entityos.cloud</div>
+        <ul>
+          <li><span class="li-dot">→</span> Firewall: Standard Rules + IP Set and/or X.509 Certs</li>
+          <li><span class="li-dot">→</span> IP Set alone: suits fixed corporate desktops and office networks</li>
+          <li><span class="li-dot">→</span> X.509 / mTLS alone: suits mobile or remote users with no fixed IP</li>
+          <li><span class="li-dot">→</span> IP Set + X.509: maximum assurance — both must pass</li>
+          <li><span class="li-dot">→</span> entityOS CA signs all certificates regardless of combination</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGRAM -->
+<section class="s-diagram" id="diagram">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--green">Architecture Diagram</p>
+      <h2 class="display-2">The complete system.</h2>
+      <p>Every component and flow from User Agent to Certificate Authority, mapped from the entityOS security architecture.</p>
+    </div>
+
+    <div class="arch-diagram rev">
+      <svg class="arch-svg" viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ag" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#888"/></marker>
+          <marker id="aw" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#ccc"/></marker>
+          <marker id="aG" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#39b54a"/></marker>
+          <marker id="ao" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#cc8800"/></marker>
+          <marker id="ar" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#cc4444"/></marker>
+          <marker id="am" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#d040b0"/></marker>
+          <marker id="av" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#8040cc"/></marker>
+        </defs>
+
+        <rect width="960" height="640" fill="#0a0a0a"/>
+
+        <!-- USER AGENT -->
+        <rect x="330" y="20" width="300" height="44" rx="2" fill="none" stroke="#444" stroke-width="1.5"/>
+        <text x="480" y="38" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">User Agent</text>
+        <text x="480" y="55" text-anchor="middle" fill="#555" font-family="Montserrat, sans-serif" font-size="10">e.g. Web Browser</text>
+
+        <!-- Arrows from user agent -->
+        <line x1="390" y1="64" x2="228" y2="112" stroke="#888" stroke-width="1.2" marker-end="url(#ag)"/>
+        <text x="274" y="90" fill="#777" font-size="9" font-family="Montserrat, sans-serif">Register to Access</text>
+        <line x1="570" y1="64" x2="732" y2="112" stroke="#888" stroke-width="1.2" marker-end="url(#ag)"/>
+        <text x="620" y="90" fill="#777" font-size="9" font-family="Montserrat, sans-serif">Access Permissioned</text>
+
+        <!-- OPEN ZONE BOX -->
+        <rect x="18" y="104" width="428" height="502" rx="2" fill="none" stroke="#cc8800" stroke-width="1.4" stroke-dasharray="6,4"/>
+        <text x="32" y="125" fill="#cc8800" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">Open</text>
+
+        <!-- RESTRICTED ZONE BOX -->
+        <rect x="514" y="104" width="428" height="502" rx="2" fill="none" stroke="#cc4444" stroke-width="1.4" stroke-dasharray="6,4"/>
+        <text x="844" y="120" fill="#cc4444" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">Restricted</text>
+        <text x="844" y="134" fill="#cc4444" font-family="Montserrat, sans-serif" font-size="10">(Closed)</text>
+
+        <!-- OPEN zone: domain heading -->
+        <text x="232" y="124" text-anchor="middle" fill="#666" font-size="9" font-family="Montserrat, sans-serif">ip. &amp; cert.</text>
+        <text x="232" y="146" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">register.entityos.io</text>
+        <line x1="232" y1="150" x2="232" y2="186" stroke="#cc8800" stroke-width="1.5" marker-end="url(#ao)"/>
+
+        <!-- "Safe" IP label -->
+        <text x="232" y="198" text-anchor="middle" fill="#cc8800" font-size="10" font-family="Montserrat, sans-serif">"Safe" IP Addresses</text>
+        <text x="232" y="212" text-anchor="middle" fill="#666" font-size="9" font-family="Montserrat, sans-serif">With Unique Security Code (Pre-Exchanged)</text>
+        <line x1="232" y1="216" x2="232" y2="242" stroke="#cc8800" stroke-width="1.5" marker-end="url(#ao)"/>
+
+        <!-- RESTRICTED zone: domain heading -->
+        <text x="728" y="124" text-anchor="middle" fill="#666" font-size="9" font-family="Montserrat, sans-serif">App URLs</text>
+        <text x="728" y="146" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">entityos.cloud</text>
+        <line x1="728" y1="150" x2="728" y2="186" stroke="#cc4444" stroke-width="1.5" marker-end="url(#ar)"/>
+
+        <!-- Registered IP label -->
+        <text x="728" y="198" text-anchor="middle" fill="#cc4444" font-size="10" font-family="Montserrat, sans-serif">Registered IP Addresses</text>
+        <text x="728" y="212" text-anchor="middle" fill="#cc4444" font-size="10" font-family="Montserrat, sans-serif">&amp;/or X.509 Certs (mTLS)</text>
+        <line x1="728" y1="217" x2="728" y2="242" stroke="#cc4444" stroke-width="1.5" marker-end="url(#ar)"/>
+
+        <!-- OPEN FIREWALL -->
+        <rect x="56" y="244" width="352" height="56" rx="2" fill="none" stroke="#39b54a" stroke-width="1.5"/>
+        <text x="232" y="266" text-anchor="middle" fill="#39b54a" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">Access Firewall (Standard)</text>
+        <rect x="148" y="274" width="110" height="18" rx="1" fill="none" stroke="#444" stroke-width="1"/>
+        <text x="203" y="286" text-anchor="middle" fill="#777" font-size="9" font-family="Montserrat, sans-serif">Standard Rules</text>
+
+        <!-- RESTRICTED FIREWALL -->
+        <rect x="548" y="244" width="358" height="56" rx="2" fill="none" stroke="#39b54a" stroke-width="1.5"/>
+        <text x="727" y="266" text-anchor="middle" fill="#39b54a" font-family="Montserrat, sans-serif" font-size="13" font-weight="700">Access Firewall (Restricted)</text>
+        <rect x="554" y="274" width="90" height="18" rx="1" fill="none" stroke="#444" stroke-width="1"/>
+        <text x="599" y="286" text-anchor="middle" fill="#777" font-size="9" font-family="Montserrat, sans-serif">Standard Rules</text>
+        <rect x="652" y="274" width="60" height="18" rx="1" fill="none" stroke="#d040b0" stroke-width="1"/>
+        <text x="682" y="286" text-anchor="middle" fill="#d040b0" font-size="9" font-family="Montserrat, sans-serif">IP Set</text>
+        <rect x="720" y="274" width="78" height="18" rx="1" fill="none" stroke="#8040cc" stroke-width="1"/>
+        <text x="759" y="286" text-anchor="middle" fill="#8040cc" font-size="9" font-family="Montserrat, sans-serif">X.509 Certs</text>
+
+        <!-- Open firewall → Register box -->
+        <line x1="232" y1="300" x2="232" y2="330" stroke="#fff" stroke-width="1.2" marker-end="url(#aw)"/>
+        <rect x="88" y="332" width="290" height="36" rx="1" fill="none" stroke="#444" stroke-width="1"/>
+        <text x="233" y="350" text-anchor="middle" fill="#bbb" font-size="10" font-family="Montserrat, sans-serif"><tspan font-weight="700" fill="#fff">Register</tspan> IPs, Cert Requests &amp; Codes</text>
+
+        <!-- → Storage -->
+        <line x1="232" y1="368" x2="232" y2="400" stroke="#fff" stroke-width="1.2" marker-end="url(#aw)"/>
+        <rect x="140" y="402" width="184" height="36" rx="1" fill="none" stroke="#39b54a" stroke-width="1.5"/>
+        <text x="232" y="424" text-anchor="middle" fill="#39b54a" font-family="Montserrat, sans-serif" font-size="13" font-weight="600">Storage</text>
+
+        <!-- → Process -->
+        <line x1="232" y1="438" x2="232" y2="468" stroke="#fff" stroke-width="1.2" marker-end="url(#aw)"/>
+        <rect x="72" y="470" width="320" height="46" rx="1" fill="none" stroke="#444" stroke-width="1"/>
+        <text x="232" y="488" text-anchor="middle" fill="#bbb" font-size="10" font-family="Montserrat, sans-serif"><tspan font-weight="700" fill="#fff">Process</tspan> IPs, Cert Requests</text>
+        <text x="232" y="503" text-anchor="middle" fill="#bbb" font-size="10" font-family="Montserrat, sans-serif">&amp; Security Codes</text>
+
+        <!-- Process → Network Access IP Rules (IP Address) -->
+        <line x1="392" y1="490" x2="590" y2="490" stroke="#39b54a" stroke-width="1.5" marker-end="url(#aG)"/>
+        <text x="470" y="484" text-anchor="middle" fill="#666" font-size="9" font-family="Montserrat, sans-serif">IP Address</text>
+
+        <!-- Process → Sign X.509 (Cert Request) -->
+        <line x1="392" y1="514" x2="614" y2="564" stroke="#39b54a" stroke-width="1.5" marker-end="url(#aG)"/>
+        <text x="454" y="548" text-anchor="middle" fill="#666" font-size="9" font-family="Montserrat, sans-serif">Cert Request</text>
+
+        <!-- Network Access IP Rules -->
+        <rect x="592" y="462" width="166" height="54" rx="1" fill="none" stroke="#d040b0" stroke-width="1.5"/>
+        <text x="675" y="483" text-anchor="middle" fill="#d040b0" font-family="Montserrat, sans-serif" font-size="11" font-weight="700">Network Access</text>
+        <text x="675" y="499" text-anchor="middle" fill="#d040b0" font-family="Montserrat, sans-serif" font-size="11" font-weight="700">IP Rules</text>
+
+        <!-- Sync IPs -->
+        <rect x="610" y="382" width="130" height="32" rx="1" fill="none" stroke="#444" stroke-width="1"/>
+        <text x="675" y="401" text-anchor="middle" fill="#888" font-size="10" font-family="Montserrat, sans-serif">Sync IPs</text>
+
+        <!-- Network Access → Sync IPs -->
+        <line x1="675" y1="462" x2="675" y2="414" stroke="#d040b0" stroke-width="1.5" marker-end="url(#am)"/>
+        <!-- Sync IPs → IP Set on firewall -->
+        <line x1="675" y1="382" x2="682" y2="292" stroke="#d040b0" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#am)"/>
+
+        <!-- entityOS CA -->
+        <rect x="776" y="462" width="136" height="54" rx="1" fill="none" stroke="#8040cc" stroke-width="1.5"/>
+        <text x="844" y="480" text-anchor="middle" fill="#8040cc" font-family="Montserrat, sans-serif" font-size="11" font-weight="700">entityOS CA</text>
+        <text x="844" y="497" text-anchor="middle" fill="#555" font-size="9" font-family="Montserrat, sans-serif">Certificate Authority</text>
+
+        <!-- entityOS CA → X.509 Certs rule (dashed) -->
+        <line x1="844" y1="462" x2="759" y2="292" stroke="#8040cc" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#av)"/>
+
+        <!-- Sign X.509 -->
+        <rect x="616" y="564" width="184" height="34" rx="1" fill="none" stroke="#444" stroke-width="1"/>
+        <text x="708" y="584" text-anchor="middle" fill="#bbb" font-size="10" font-family="Montserrat, sans-serif">Sign X.509 Certificates</text>
+
+        <!-- entityOS CA → Sign X.509 -->
+        <line x1="844" y1="516" x2="800" y2="564" stroke="#8040cc" stroke-width="1.5" marker-end="url(#av)"/>
+
+        <!-- Auth + Resources -->
+        <rect x="778" y="314" width="152" height="62" rx="1" fill="none" stroke="#39b54a" stroke-width="1.5"/>
+        <text x="854" y="334" text-anchor="middle" fill="#39b54a" font-family="Montserrat, sans-serif" font-size="11" font-weight="700">Auth</text>
+        <text x="854" y="352" text-anchor="middle" fill="#555" font-size="9" font-family="Montserrat, sans-serif">Resources</text>
+        <text x="854" y="365" text-anchor="middle" fill="#555" font-size="9" font-family="Montserrat, sans-serif">(Objects, Files etc)</text>
+
+        <!-- Firewall → Auth -->
+        <line x1="854" y1="300" x2="854" y2="314" stroke="#39b54a" stroke-width="1.5" marker-end="url(#aG)"/>
+
+        <!-- Legend -->
+        <text x="28" y="624" fill="#444" font-size="9" font-family="Montserrat, sans-serif">Open zone (orange dashes)</text>
+        <text x="186" y="624" fill="#444" font-size="9" font-family="Montserrat, sans-serif">  Restricted zone (red dashes)</text>
+        <text x="356" y="624" fill="#444" font-size="9" font-family="Montserrat, sans-serif">  Firewall (green)</text>
+        <text x="460" y="624" fill="#444" font-size="9" font-family="Montserrat, sans-serif">  IP Sync (magenta)</text>
+        <text x="572" y="624" fill="#444" font-size="9" font-family="Montserrat, sans-serif">  Cert Authority (violet)</text>
+        <text x="712" y="624" fill="#444" font-size="9" font-family="Montserrat, sans-serif">  Data flows (green solid)</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- STAGES -->
+<section class="s-stages" id="stages">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--dim">Implementation Mechanisms</p>
+      <h2 class="display-2 display-2--light">IP restriction or mTLS — or both.</h2>
+      <p>These are two independent mechanisms. Each can be deployed on its own. The right combination depends on the access pattern of the user or device, not a mandated sequence.</p>
+    </div>
+
+    <div class="stage-pair">
+      <div class="stage rev">
+        <div class="stage-top">
+          <div class="stage-num">Mechanism 1 — IP Restriction</div>
+          <div class="stage-duration">IP Set + Sync</div>
+        </div>
+        <h3>Register and allowlist IP addresses</h3>
+        <p class="stage-desc">The user agent registers its IP via register.entityos.io. The IP is processed and synced to the restricted firewall's IP Set. Any connection from that IP is admitted — no certificate required. Best suited to fixed, predictable network locations.</p>
+        <ul class="stage-steps">
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Deploy register.entityos.io — the open registration endpoint</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Implement Storage + Process function for IP registration</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Configure WAF IP Set rule on the restricted firewall</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Wire Network Access IP Rules → Sync IPs → IP Set</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Remove 0.0.0.0/0 inbound rules — only registered IPs admitted</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Validate: registered IPs pass, all others dropped</li>
+        </ul>
+        <div style="margin-top:2.8rem; padding:1.8rem 2.4rem; background:rgba(57,181,74,0.07); border-left:3px solid rgba(57,181,74,0.4);">
+          <div style="font-family:'Montserrat',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; letter-spacing:.12rem; color:#39b54a; margin-bottom:.8rem;">Suited to</div>
+          <div style="font-family:'Montserrat',sans-serif; font-size:1.35rem; font-weight:300; color:rgba(255,255,255,0.45); line-height:1.65;">Corporate desktops on a fixed office network or static IP range — known locations, no need for per-device certificates.</div>
+        </div>
+      </div>
+
+      <div class="stage rev">
+        <div class="stage-top">
+          <div class="stage-num">Mechanism 2 — X.509 / mTLS</div>
+          <div class="stage-duration">entityOS CA + Certs</div>
+        </div>
+        <h3>Register and issue X.509 certificates</h3>
+        <p class="stage-desc">The user agent registers its CSR via register.entityos.io. entityOS CA signs the certificate. The client presents it on every connection via mTLS. The restricted firewall validates the cert — no fixed IP required. Best suited to mobile or roaming users.</p>
+        <ul class="stage-steps">
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Deploy entityOS CA (ACM Private CA or entityOS-managed)</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Extend register.entityos.io to accept cert signing requests (CSRs)</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Wire Process → entityOS CA → Sign X.509 flow</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Add X.509 Certs rule to the restricted firewall</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Configure API Gateway for mutual TLS enforcement</li>
+          <li><span class="step-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Implement cert rotation and revocation via entityOS CA</li>
+        </ul>
+        <div style="margin-top:2.8rem; padding:1.8rem 2.4rem; background:rgba(57,181,74,0.07); border-left:3px solid rgba(57,181,74,0.4);">
+          <div style="font-family:'Montserrat',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; letter-spacing:.12rem; color:#39b54a; margin-bottom:.8rem;">Suited to</div>
+          <div style="font-family:'Montserrat',sans-serif; font-size:1.35rem; font-weight:300; color:rgba(255,255,255,0.45); line-height:1.65;">Laptops working from home, cafes, or client sites — roaming IPs, but a device-bound certificate that travels with the user.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combination row -->
+    <div style="margin-top:3px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:3.6rem 4rem;" class="rev">
+      <div style="display:grid; grid-template-columns:1fr 2fr; gap:4rem; align-items:start; flex-wrap:wrap;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:1rem; color:#39b54a; text-transform:uppercase; letter-spacing:.2rem; margin-bottom:1.2rem;">Combined</div>
+          <h3 style="font-family:'Montserrat',sans-serif; font-size:2rem; font-weight:600; color:#fff; line-height:1.3;">IP Set + X.509 together — maximum assurance</h3>
+        </div>
+        <div>
+          <p style="font-family:'Montserrat',sans-serif; font-size:1.45rem; font-weight:300; color:rgba(255,255,255,0.45); line-height:1.7; margin-bottom:2rem;">Both mechanisms can be active simultaneously on the same restricted firewall. The IP Set and the X.509 Certs rule are independent checks — a connection can be required to pass one, the other, or both, depending on your policy. This means a single organisation can run mixed access patterns in parallel: office desktops on IP allowlisting, and laptops on mTLS certificates, all terminating at the same entityos.cloud endpoint.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.6rem;">
+            <div style="padding:1.6rem 2rem; background:rgba(0,0,0,0.3); border-left:3px solid #39b54a;">
+              <div style="font-family:'Montserrat',sans-serif; font-size:1.2rem; font-weight:700; color:#fff; margin-bottom:.6rem;">Corporate desktop</div>
+              <div style="font-family:'Montserrat',sans-serif; font-size:1.3rem; font-weight:300; color:rgba(255,255,255,0.4); line-height:1.6;">Fixed office IP → IP Set check passes → access granted. No cert needed.</div>
+            </div>
+            <div style="padding:1.6rem 2rem; background:rgba(0,0,0,0.3); border-left:3px solid #39b54a;">
+              <div style="font-family:'Montserrat',sans-serif; font-size:1.2rem; font-weight:700; color:#fff; margin-bottom:.6rem;">Laptop out of office</div>
+              <div style="font-family:'Montserrat',sans-serif; font-size:1.3rem; font-weight:300; color:rgba(255,255,255,0.4); line-height:1.6;">Dynamic IP → IP Set fails → X.509 mTLS cert checked → access granted.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="s-components" id="components">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--green">System Components</p>
+      <h2 class="display-2">What you're building — by zone.</h2>
+      <p>Six components, directly from the architecture diagram. Each has a zone, a function, and a dependency.</p>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card rev">
+        <div class="comp-zone">Open Zone</div>
+        <h4>register.entityos.io</h4>
+        <p>The public registration endpoint. Intentionally open — no cert required to reach it. Validates the pre-exchanged security code before passing submissions downstream.</p>
+        <ul class="comp-items">
+          <li><span class="ci-dot">→</span>Accepts IP + CSR + security code</li>
+          <li><span class="ci-dot">→</span>Standard Firewall rules only</li>
+          <li><span class="ci-dot">→</span>Entry point to the registration pipeline</li>
+        </ul>
+      </div>
+      <div class="comp-card rev">
+        <div class="comp-zone">Open Zone</div>
+        <h4>Storage + Process</h4>
+        <p>The open zone's backend. Persists all registration submissions, then routes them: IPs go to the IP Rules engine, cert requests go to entityOS CA.</p>
+        <ul class="comp-items">
+          <li><span class="ci-dot">→</span>entityOS cloud storage layer</li>
+          <li><span class="ci-dot">→</span>IP → Network Access IP Rules</li>
+          <li><span class="ci-dot">→</span>Cert request → entityOS CA</li>
+        </ul>
+      </div>
+      <div class="comp-card rev">
+        <div class="comp-zone">Restricted Zone</div>
+        <h4>Access Firewall (Restricted)</h4>
+        <p>The primary gate of entityos.cloud. Three simultaneous rule types — all must pass. Anonymous traffic is dropped before any application code executes.</p>
+        <ul class="comp-items">
+          <li><span class="ci-dot">→</span>Standard Rules — base WAF policy</li>
+          <li><span class="ci-dot">→</span>IP Set — registered IPs only</li>
+          <li><span class="ci-dot">→</span>X.509 Certs — valid cert for mTLS</li>
+        </ul>
+      </div>
+      <div class="comp-card rev">
+        <div class="comp-zone">Restricted Zone</div>
+        <h4>Network Access IP Rules + Sync IPs</h4>
+        <p>Receives processed IP addresses from the open zone. Sync IPs propagates them to the restricted firewall's IP Set in near real time — keeping both zones coordinated.</p>
+        <ul class="comp-items">
+          <li><span class="ci-dot">→</span>Receives IP from Process function</li>
+          <li><span class="ci-dot">→</span>Sync IPs → updates IP Set rule</li>
+          <li><span class="ci-dot">→</span>Near real-time propagation</li>
+        </ul>
+      </div>
+      <div class="comp-card rev">
+        <div class="comp-zone">Restricted Zone</div>
+        <h4>entityOS CA</h4>
+        <p>The certificate authority for the entire system. Signs X.509 certificates on request. Feeds signed certs back to the client and registers them with the firewall's cert rule.</p>
+        <ul class="comp-items">
+          <li><span class="ci-dot">→</span>Signs X.509 certificates</li>
+          <li><span class="ci-dot">→</span>Feeds cert to firewall X.509 rule</li>
+          <li><span class="ci-dot">→</span>Manages rotation + revocation</li>
+        </ul>
+      </div>
+      <div class="comp-card rev">
+        <div class="comp-zone">Restricted Zone</div>
+        <h4>Auth + Resources</h4>
+        <p>The application layer — only reachable after the firewall passes both the IP Set and X.509 checks. Contains authentication logic and all protected objects and files.</p>
+        <ul class="comp-items">
+          <li><span class="ci-dot">→</span>Unreachable without valid IP + cert</li>
+          <li><span class="ci-dot">→</span>Objects, Files, application resources</li>
+          <li><span class="ci-dot">→</span>App-layer auth as final check</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="s-flow" id="flow">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--dim">Registration Flow</p>
+      <h2 class="display-2 display-2--light">What happens when a user agent registers.</h2>
+      <p>Five sequential steps. Two parallel outputs (IP + cert). One verified identity.</p>
+    </div>
+    <div class="flow-rows">
+      <div class="flow-row rev">
+        <div class="flow-accent"></div>
+        <div class="flow-body">
+          <div class="flow-num">01</div>
+          <div class="flow-content">
+            <div class="flow-title">User agent visits register.entityos.io</div>
+            <div class="flow-desc">The agent opens a connection to the open zone. No certificate required. The Access Firewall (Standard) applies basic rules. The registration surface is deliberately reachable from any IP.</div>
+          </div>
+          <div class="flow-tag">Open Zone</div>
+        </div>
+      </div>
+      <div class="flow-row rev">
+        <div class="flow-accent"></div>
+        <div class="flow-body">
+          <div class="flow-num">02</div>
+          <div class="flow-content">
+            <div class="flow-title">Submit IP + CSR + pre-exchanged security code</div>
+            <div class="flow-desc">The agent submits its IP address, a certificate signing request, and the unique security code issued at onboarding. The code prevents unauthenticated bulk registration. The submission is written to Storage.</div>
+          </div>
+          <div class="flow-tag">Registration</div>
+        </div>
+      </div>
+      <div class="flow-row rev">
+        <div class="flow-accent"></div>
+        <div class="flow-body">
+          <div class="flow-num">03a</div>
+          <div class="flow-content">
+            <div class="flow-title">Process routes IP → Network Access IP Rules → Sync IPs → IP Set</div>
+            <div class="flow-desc">The IP address is extracted and sent to the Network Access IP Rules engine in the restricted zone. Sync IPs propagates it to the restricted firewall's IP Set. The agent's IP is now trusted at the network boundary.</div>
+          </div>
+          <div class="flow-tag">IP Path</div>
+        </div>
+      </div>
+      <div class="flow-row rev">
+        <div class="flow-accent"></div>
+        <div class="flow-body">
+          <div class="flow-num">03b</div>
+          <div class="flow-content">
+            <div class="flow-title">Process routes CSR → entityOS CA → Sign X.509 Certificates</div>
+            <div class="flow-desc">In parallel, the CSR is forwarded to entityOS CA. The CA validates and signs it, producing a trusted X.509 cert. The signed cert is returned to the agent and registered with the firewall's X.509 Certs rule.</div>
+          </div>
+          <div class="flow-tag">Cert Path</div>
+        </div>
+      </div>
+      <div class="flow-row rev">
+        <div class="flow-accent"></div>
+        <div class="flow-body">
+          <div class="flow-num">04</div>
+          <div class="flow-content">
+            <div class="flow-title">Agent accesses entityos.cloud — IP Set + X.509 mTLS both pass</div>
+            <div class="flow-desc">The agent connects to entityos.cloud presenting its registered IP and signed X.509 cert. The restricted firewall checks all three rule types. IP Set: pass. X.509 mTLS handshake: pass. Auth and Resources become reachable.</div>
+          </div>
+          <div class="flow-tag">Restricted Zone</div>
+        </div>
+      </div>
+      <div class="flow-row rev">
+        <div class="flow-accent flow-accent--red"></div>
+        <div class="flow-body">
+          <div class="flow-num flow-num--red">✕</div>
+          <div class="flow-content">
+            <div class="flow-title">Unregistered agent — dropped at the restricted firewall</div>
+            <div class="flow-desc">Any connection without a registered IP or valid X.509 cert is dropped silently at the firewall. No application code runs. No response is returned that could aid reconnaissance or scanning.</div>
+          </div>
+          <div class="flow-tag flow-tag--red">Blocked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="s-conclusion">
+  <span class="concl-line"></span>
+  <div class="row">
+    <div class="concl-inner rev">
+      <p class="subhead subhead--dim">The Model</p>
+      <h2 class="display-2 display-2--light">Match the mechanism to the access pattern.</h2>
+      <p>IP restriction for fixed locations. mTLS for roaming devices. Both for maximum assurance. One registration surface, one certificate authority, one restricted firewall — configured to fit your organisation's real-world access patterns.</p>
+      <div class="concl-ctas">
+        <a href="https://www.entityos.io/security/the-solution" class="btn btn--primary">The Solution</a>
+        <a href="https://www.entityos.io/security/implementation" class="btn">Implementation Stages</a>
+      </div>
+      <div class="key-box rev">
+        The two mechanisms are <strong>independent — not sequential</strong>. IP restriction alone works for fixed locations. mTLS alone works for roaming devices. Both together gives maximum assurance. A single organisation can run all three patterns simultaneously against the same restricted firewall — the combination is determined by the access pattern of each user or device, not a mandated rollout order.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="row">
+    <div class="footer-row">
+      <div class="footer-logo">entityOS</div>
+      <div class="footer-copy">
+        CTO Implementation — entityOS Security Architecture<br>
+        <a href="https://docs.entityos.cloud/protect">ISO 27001/17 Certified</a> · ibCom Pty Ltd, Australia · <a href="mailto:hello@entityos.cloud">hello@entityos.cloud</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('progress').style.width =
+      Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100) + '%';
+    document.getElementById('site-header').classList.toggle('opaque', window.scrollY > 80);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rev').forEach((el, i) => {
+    el.style.transitionDelay = (i % 5) * 0.07 + 's';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
