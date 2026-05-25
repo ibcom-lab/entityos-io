@@ -12,11 +12,11 @@ permalink: /security/logon-codes
 <meta name="description" content="Why one-time logon codes sent over SMS and email travel across systems you don't control — and how TOTP keeps the secret on the device.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   html{font-size:10px;scroll-behavior:smooth;}
-  body{font-family:'Lora',serif;font-size:1.7rem;line-height:1.765;color:#757575;background:#111111;-webkit-font-smoothing:antialiased;}
+  body{font-family:'Montserrat',sans-serif;font-size:1.7rem;line-height:1.765;color:#757575;background:#111111;-webkit-font-smoothing:antialiased;}
   h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif;font-weight:500;color:#000;}
   a{color:#0087cc;text-decoration:none;}
   ::selection{background:#39b54a;color:#fff;}
@@ -67,7 +67,7 @@ permalink: /security/logon-codes
   .display-2{font-family:'Montserrat',sans-serif;font-size:4.4rem;font-weight:500;line-height:1.2;letter-spacing:-.05rem;color:#000;}
   .display-2--light{color:#fff;}
   @media(max-width:760px){.display-2{font-size:3rem;}.pad{padding:7rem 0;}}
-  .lead{font-family:'Lora',serif;font-size:1.9rem;line-height:1.7;color:#757575;max-width:760px;}
+  .lead{font-family:'Montserrat',sans-serif;font-size:1.9rem;line-height:1.7;color:#757575;max-width:760px;}
   .lead--light{color:rgba(255,255,255,0.62);}
 
   /* Green strip */
@@ -137,17 +137,17 @@ permalink: /security/logon-codes
   /* TOTP mechanics steps */
   .steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;}
   .step{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-top:3px solid #39b54a;padding:3rem 2.6rem;position:relative;}
-  .step-num{font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a;letter-spacing:.1rem;}
+  .step-num{font-family:'Montserrat',sans-serif;font-size:1.2rem;color:#39b54a;letter-spacing:.1rem;}
   .step h4{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:600;color:#fff;margin:1.2rem 0 1rem;}
   .step p{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.65;}
-  .step code{font-family:'JetBrains Mono',monospace;font-size:1.25rem;color:#7fd98c;background:rgba(57,181,74,0.1);padding:.2rem .6rem;border-radius:3px;}
+  .step code{font-family:'Montserrat',sans-serif;font-size:1.25rem;color:#7fd98c;background:rgba(57,181,74,0.1);padding:.2rem .6rem;border-radius:3px;}
   @media(max-width:760px){.steps{grid-template-columns:1fr;}}
 
   /* Trust layers */
   .trust-layer{display:flex;align-items:stretch;margin-bottom:1.4rem;}
   .trust-accent{width:4px;background:#39b54a;flex-shrink:0;}
   .trust-body{flex:1;padding:2.4rem 3.6rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:3.2rem;}
-  .trust-num{font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a;flex-shrink:0;}
+  .trust-num{font-family:'Montserrat',sans-serif;font-size:1.2rem;color:#39b54a;flex-shrink:0;}
   .trust-content h4{font-family:'Montserrat',sans-serif;font-size:1.65rem;font-weight:600;color:#fff;margin-bottom:.5rem;}
   .trust-content p{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:300;color:rgba(255,255,255,0.42);line-height:1.6;}
   @media(max-width:760px){.trust-body{flex-direction:column;align-items:flex-start;gap:1rem;padding:2rem;}}
@@ -174,7 +174,7 @@ permalink: /security/logon-codes
   footer{background:#0c0c0c;padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,0.05);}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
   .footer-logo img{width:140px;height:auto;display:block;opacity:.7;}
-  .footer-copy{font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:rgba(255,255,255,0.2);text-align:right;line-height:1.9;}
+  .footer-copy{font-family:'Montserrat',sans-serif;font-size:1.1rem;color:rgba(255,255,255,0.2);text-align:right;line-height:1.9;}
   .footer-copy a{color:rgba(255,255,255,0.32);}
 
   /* Reveal */
@@ -404,7 +404,7 @@ permalink: /security/logon-codes
           <tr>
             <td>Standard</td>
             <td>No single standard; provider-dependent</td>
-            <td>Open standard &mdash; <span style="font-family:'JetBrains Mono',monospace;font-size:1.25rem;">RFC 6238</span></td>
+            <td>Open standard &mdash; <span style="font-family:'Montserrat',sans-serif;font-size:1.25rem;">RFC 6238</span></td>
           </tr>
         </tbody>
       </table>
