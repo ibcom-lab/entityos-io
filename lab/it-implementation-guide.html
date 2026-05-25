@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Implementation Guide — entityOS Certificate Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 10px; scroll-behavior: smooth; }
+body { font-family: 'Lora', serif; font-size: 1.7rem; line-height: 1.765; color: #757575; background: #fff; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Montserrat', sans-serif; font-weight: 500; color: #000; }
+a { color: #0087cc; }
+
+#progress { position: fixed; top: 0; left: 0; height: 4px; z-index: 900; background: #39b54a; transition: width 0.1s; width: 0; }
+
+/* ── NAV ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  padding: 1.6rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: transparent; transition: background 0.3s, box-shadow 0.3s;
+}
+header.scrolled { background: #111; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+.nav-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2rem; color: #39b54a; text-decoration: none; }
+.nav-label { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+
+/* ── HERO ── */
+.hero {
+  background: #111; padding: 16rem 4rem 10rem;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 8rem; background: #39b54a;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: #39b54a;
+  border: 1px solid rgba(57,181,74,0.3); border-radius: 2rem;
+  padding: 0.6rem 1.6rem; margin-bottom: 3rem;
+}
+.hero-badge svg { width: 14px; height: 14px; stroke: #39b54a; fill: none; stroke-width: 2; }
+.hero h1 {
+  font-size: 5.5rem; font-weight: 800; line-height: 1.1;
+  color: #fff; max-width: 80rem; margin: 0 auto 2.5rem;
+}
+.hero h1 span { color: #39b54a; }
+.hero p { font-family: 'Montserrat', sans-serif; font-size: 1.9rem; font-weight: 300; color: rgba(255,255,255,0.6); max-width: 60rem; margin: 0 auto 4rem; }
+.hero-meta {
+  display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+  margin-top: 5rem; padding-top: 4rem; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-meta-item { text-align: center; }
+.hero-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #39b54a; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; }
+.hero-meta-val { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 500; color: rgba(255,255,255,0.8); }
+
+/* ── SECTIONS ── */
+.section { padding: 8rem 4rem; }
+.section-inner { max-width: 100rem; margin: 0 auto; }
+.section-green { background: #39b54a; }
+.section-white { background: #fff; }
+.section-grey { background: #f4f4f4; }
+.section-dark { background: #111; }
+
+.section-tag {
+  font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; color: #39b54a;
+  margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;
+}
+.section-green .section-tag { color: #000; }
+.section-dark .section-tag { color: #39b54a; }
+.section-tag::before { content: ''; display: block; width: 2.4rem; height: 2px; background: currentColor; }
+
+h2.section-title { font-size: 3.8rem; font-weight: 700; line-height: 1.2; margin-bottom: 2rem; }
+.section-dark h2.section-title { color: #fff; }
+.section-green h2.section-title { color: #000; }
+
+/* ── OVERVIEW CARDS ── */
+.overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 5rem; }
+.overview-card {
+  background: #fff; border: 1px solid #e8e8e8; border-radius: 8px;
+  padding: 3rem; border-top: 3px solid #39b54a;
+}
+.overview-card .card-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #39b54a;
+  font-weight: 500; letter-spacing: 0.1em; margin-bottom: 1.2rem;
+}
+.overview-card h3 { font-size: 1.9rem; font-weight: 700; margin-bottom: 1rem; color: #000; }
+.overview-card p { font-size: 1.5rem; line-height: 1.6; color: #757575; }
+
+/* ── STEPS ── */
+.steps { display: flex; flex-direction: column; gap: 0; margin-top: 4rem; }
+.step {
+  display: grid; grid-template-columns: 6rem 1fr; gap: 3rem;
+  padding: 3.5rem 0; border-bottom: 1px solid #e8e8e8; position: relative;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  width: 5rem; height: 5rem; border-radius: 50%;
+  background: #39b54a; color: #fff;
+  font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-dark .step-num { background: rgba(57,181,74,0.15); color: #39b54a; border: 1px solid rgba(57,181,74,0.3); }
+.step-content h3 { font-size: 2rem; font-weight: 700; margin-bottom: 0.8rem; color: #000; }
+.step-dark .step-content h3 { color: #fff; }
+.step-content p { font-size: 1.5rem; line-height: 1.7; margin-bottom: 1.2rem; }
+.step-content p:last-child { margin-bottom: 0; }
+
+/* ── CODE BLOCKS ── */
+.code-block {
+  background: #0c0c0c; border: 1px solid rgba(57,181,74,0.2); border-radius: 6px;
+  padding: 2rem 2.5rem; margin: 1.5rem 0; overflow-x: auto;
+}
+.code-block pre {
+  font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; line-height: 1.6;
+  color: rgba(255,255,255,0.85); white-space: pre; margin: 0;
+}
+.code-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #39b54a;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; display: block;
+}
+.code-block-light {
+  background: #f8f8f8; border: 1px solid #e0e0e0; border-radius: 6px;
+  padding: 2rem 2.5rem; margin: 1.5rem 0; overflow-x: auto;
+}
+.code-block-light pre {
+  font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; line-height: 1.6;
+  color: #333; white-space: pre; margin: 0;
+}
+
+/* ── NOTE / WARNING BOXES ── */
+.note-box {
+  display: flex; gap: 1.5rem; padding: 2rem 2.5rem;
+  border-radius: 6px; margin: 2rem 0;
+  background: rgba(57,181,74,0.07); border: 1px solid rgba(57,181,74,0.25);
+}
+.note-box svg { width: 20px; height: 20px; stroke: #39b54a; fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 0.2rem; }
+.note-box p { font-size: 1.5rem; line-height: 1.6; margin: 0; }
+.warn-box {
+  display: flex; gap: 1.5rem; padding: 2rem 2.5rem;
+  border-radius: 6px; margin: 2rem 0;
+  background: rgba(200,100,0,0.06); border: 1px solid rgba(200,100,0,0.2);
+}
+.warn-box svg { width: 20px; height: 20px; stroke: #c86400; fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 0.2rem; }
+
+/* ── PLATFORM TABS ── */
+.platform-tabs { margin-top: 3rem; }
+.tab-nav { display: flex; gap: 0; border-bottom: 2px solid #e0e0e0; margin-bottom: 3rem; }
+.tab-btn {
+  font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 600;
+  padding: 1.2rem 2.4rem; border: none; background: none; cursor: pointer;
+  color: #757575; border-bottom: 3px solid transparent; margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn.active { color: #39b54a; border-bottom-color: #39b54a; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; margin-top: 2rem; }
+.checklist li {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.2rem 0; border-bottom: 1px solid #eee;
+  font-size: 1.5rem; line-height: 1.6;
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: ''; width: 1.8rem; height: 1.8rem; border-radius: 50%;
+  border: 2px solid #39b54a; flex-shrink: 0; margin-top: 0.1rem;
+}
+.checklist-dark li { border-bottom-color: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); }
+.checklist-dark li::before { border-color: #39b54a; }
+
+/* ── MDM SECTION ── */
+.mdm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.mdm-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 2.5rem;
+}
+.mdm-card h4 { font-size: 1.7rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; }
+.mdm-card p { font-size: 1.4rem; line-height: 1.6; color: rgba(255,255,255,0.55); }
+.mdm-card .mdm-tag {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 1rem;
+  color: #39b54a; background: rgba(57,181,74,0.1); border: 1px solid rgba(57,181,74,0.2);
+  border-radius: 2rem; padding: 0.3rem 1rem; margin-bottom: 1rem;
+}
+
+/* ── TWO COL ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.two-col-3-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 6rem; align-items: start; }
+
+/* ── TABLE ── */
+.data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+.data-table th {
+  font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #39b54a;
+  padding: 1.2rem 1.5rem; border-bottom: 2px solid #39b54a; text-align: left;
+}
+.data-table td {
+  font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 400;
+  padding: 1.2rem 1.5rem; border-bottom: 1px solid #e8e8e8; color: #444;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.mono { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; }
+
+/* ── CONCLUSION ── */
+.conclusion { background: #151515; padding: 10rem 4rem; text-align: center; position: relative; }
+.conclusion::before { content: ''; display: block; width: 2px; height: 10rem; background: #39b54a; margin: 0 auto 5rem; }
+.conclusion h2 { font-size: 4rem; font-weight: 800; color: #fff; margin-bottom: 2rem; }
+.conclusion p { font-size: 1.8rem; color: rgba(255,255,255,0.55); max-width: 55rem; margin: 0 auto 4rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 1rem;
+  background: #39b54a; color: #fff; text-decoration: none;
+  font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1.6rem 4rem; border-radius: 4px;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #2ea03d; color: #fff; }
+.btn-primary svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; }
+
+/* ── FOOTER ── */
+footer { background: #0c0c0c; padding: 4rem; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-inner { max-width: 100rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: rgba(255,255,255,0.2); }
+
+@media (max-width: 900px) {
+  header { padding: 1.6rem 2rem; }
+  .hero { padding: 12rem 2rem 6rem; }
+  .hero h1 { font-size: 3.5rem; }
+  .section { padding: 6rem 2rem; }
+  .overview-grid, .mdm-grid, .two-col, .two-col-3-2 { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-meta { gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header id="site-header">
+  <a href="#" class="nav-logo">entityOS</a>
+  <span class="nav-label">IT Implementation Guide</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+    Corporate IT Guide
+  </div>
+  <h1>Certificate Registration<br><span>Implementation Guide</span></h1>
+  <p>Everything your IT team needs to deploy client certificate authentication across your organisation.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Registration URL</span>
+      <span class="hero-meta-val">cert.register.entityos.io</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Certificate Type</span>
+      <span class="hero-meta-val">ECDSA P-256 mTLS</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Validity</span>
+      <span class="hero-meta-val">5 days (auto-renew)</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Audience</span>
+      <span class="hero-meta-val">Corporate IT / Helpdesk</span>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section section-white">
+  <div class="section-inner">
+    <div class="section-tag">Overview</div>
+    <h2 class="section-title">What this achieves</h2>
+    <p style="max-width:65rem;margin-bottom:1rem;">entityOS uses mutual TLS (mTLS) to authenticate users. Instead of passwords, each user carries a short-lived client certificate issued by the entityOS Certificate Authority. This guide covers everything your IT team needs to deploy this across your organisation.</p>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="card-num">01 — ISSUE</div>
+        <h3>Users self-register</h3>
+        <p>Users visit the registration URL, enter their security code, and a certificate is generated entirely in their browser. The private key never leaves their device.</p>
+      </div>
+      <div class="overview-card">
+        <div class="card-num">02 — INSTALL</div>
+        <h3>Certificate is installed</h3>
+        <p>A .p12 file is downloaded and imported into the OS certificate store. The browser detects it automatically — no plugins or extensions required.</p>
+      </div>
+      <div class="overview-card">
+        <div class="card-num">03 — TRUST</div>
+        <h3>CA is deployed via MDM</h3>
+        <p>IT pushes the entityOS CA certificate to all managed devices as a trusted root. Users see no warnings and the connection is seamless on every subsequent visit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY CODES -->
+<section class="section section-grey">
+  <div class="section-inner">
+    <div class="section-tag">Step 1</div>
+    <h2 class="section-title">Issue security codes to users</h2>
+    <p style="max-width:65rem;margin-bottom:3rem;">Each user needs a unique security code before they can register. Security codes are SHA-256 hashed before storage — the plaintext code is given to the user, only its hash is held by the system.</p>
+
+    <div class="two-col-3-2">
+      <div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Generate a UUID for each user</h3>
+              <p>Use any UUID v4 generator. The format is irrelevant — any string works as a security code. UUIDs are convenient because they are already unique and random.</p>
+              <span class="code-label">PowerShell</span>
+              <div class="code-block-light"><pre>[System.Guid]::NewGuid().ToString()</pre></div>
+              <span class="code-label">macOS / Linux</span>
+              <div class="code-block-light"><pre>uuidgen | tr '[:upper:]' '[:lower:]'</pre></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Add the code hash to S3</h3>
+              <p>Use the entityOS cert-setup factory to hash and upload the code in one step. This updates <code style="font-family:JetBrains Mono,monospace;font-size:1.3rem">setup/entityos-security-codes.hashes</code> in the registration S3 bucket.</p>
+              <div class="code-block-light"><pre>entityos.invoke('util-cert-setup-code-add', {
+  code: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+});</pre></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Send the code to the user</h3>
+              <p>Send the plaintext UUID to the user via a secure channel (e.g. encrypted email, IT ticketing system, or in-person handover). Include the registration URL and these instructions.</p>
+              <div class="note-box" style="margin-top:1.5rem">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p>Security codes are reusable — the same code can register on multiple devices. To revoke a user's access, remove their hash from the S3 hashes file.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:2.5rem;position:sticky;top:10rem;">
+          <div style="font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#39b54a;margin-bottom:1.5rem;">Sample user email</div>
+          <p style="font-size:1.4rem;line-height:1.7;color:#444;margin-bottom:1.5rem;">
+            <strong>Subject:</strong> Your entityOS access code
+          </p>
+          <p style="font-size:1.4rem;line-height:1.7;color:#555;">
+            Hi [Name],<br><br>
+            To access entityOS-protected systems you need to register a client certificate on each device you use.<br><br>
+            <strong>Your security code:</strong><br>
+            <code style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;background:#f4f4f4;padding:0.4rem 0.8rem;border-radius:4px;display:inline-block;margin:0.8rem 0;">a1b2c3d4-e5f6-...</code><br><br>
+            <strong>Registration URL:</strong><br>
+            <a href="https://cert.register.entityos.io" style="color:#0087cc;">https://cert.register.entityos.io</a><br><br>
+            Visit the URL, enter your code, and follow the install instructions. Contact IT if you need help.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALLATION BY OS -->
+<section class="section section-white">
+  <div class="section-inner">
+    <div class="section-tag">Step 2</div>
+    <h2 class="section-title">Install the certificate</h2>
+    <p style="max-width:65rem;margin-bottom:1rem;">Users visit <strong>cert.register.entityos.io</strong>, enter their security code and email, then follow the platform-specific steps below. The .p12 download and install instructions are also shown on the registration page.</p>
+
+    <div class="platform-tabs">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="showTab('mac', this)">macOS</button>
+        <button class="tab-btn" onclick="showTab('win', this)">Windows</button>
+        <button class="tab-btn" onclick="showTab('ios', this)">iPhone / iPad</button>
+        <button class="tab-btn" onclick="showTab('android', this)">Android</button>
+      </div>
+
+      <div id="tab-mac" class="tab-panel active">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Visit the registration page</h3>
+              <p>Open <strong>cert.register.entityos.io</strong> in Chrome, Safari, or Edge. Enter the security code and email address, then click <em>Generate &amp; Register Certificate</em>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Download the .p12 file</h3>
+              <p>The .p12 file downloads automatically. Note the password shown on the page — you will need it in the next step.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Import into Keychain Access</h3>
+              <p>Double-click the downloaded .p12 file. Keychain Access will open. Enter the password when prompted and click <em>Add</em>. The certificate appears under <em>My Certificates</em>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Restart the browser</h3>
+              <p>Fully quit and reopen Chrome, Safari, or Edge. On the next visit to an entityOS-protected resource, the browser will present the certificate automatically.</p>
+            </div>
+          </div>
+        </div>
+        <div class="warn-box">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <p style="font-size:1.5rem;line-height:1.6;margin:0;"><strong>Certificate not trusted?</strong> The registration page includes a one-click download of the entityOS CA certificate. Alternatively, IT can push the CA cert to all Macs via MDM — see Step 3.</p>
+        </div>
+      </div>
+
+      <div id="tab-win" class="tab-panel">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Visit the registration page</h3>
+              <p>Open <strong>cert.register.entityos.io</strong> in Chrome or Edge. Enter the security code and email, then click <em>Generate &amp; Register Certificate</em>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Download the .p12 file</h3>
+              <p>The .p12 file downloads automatically. Note the password shown on the page.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Run the Certificate Import Wizard</h3>
+              <p>Double-click the .p12 file. The Certificate Import Wizard opens.</p>
+              <ul style="font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:300;line-height:1.9;padding-left:2rem;margin-top:0.8rem;color:#555;">
+                <li>Select <strong>Current User</strong> as the store location → Next</li>
+                <li>Confirm the file path → Next</li>
+                <li>Enter the .p12 password → Next</li>
+                <li>Select <strong>Automatically select the certificate store</strong> → Next</li>
+                <li>Click <strong>Finish</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Verify in Certificate Manager</h3>
+              <p>Open <strong>certmgr.msc</strong> → <em>Personal → Certificates</em>. Confirm the entityOS certificate appears.</p>
+              <div class="code-block-light"><pre># Open from Run dialog (Win+R):
+certmgr.msc</pre></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h3>Restart the browser</h3>
+              <p>Fully quit and reopen Chrome or Edge. The certificate will be presented automatically on entityOS-protected resources.</p>
+            </div>
+          </div>
+        </div>
+        <div class="note-box">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <p style="font-size:1.5rem;line-height:1.6;margin:0;">Firefox on Windows maintains its own certificate store. See the registration page for Firefox-specific instructions if your organisation uses Firefox.</p>
+        </div>
+      </div>
+
+      <div id="tab-ios" class="tab-panel">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Open the registration page in Safari</h3>
+              <p>Navigate to <strong>cert.register.entityos.io</strong> in Safari on the iPhone or iPad. Enter the security code and email, then tap <em>Generate &amp; Register Certificate</em>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Download the .p12</h3>
+              <p>Tap the download link on the page. iOS will prompt to save the file. Note the password shown on screen.</p>
+              <div class="note-box" style="margin-top:1.2rem">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p style="font-size:1.4rem;">Alternatively, email or AirDrop the .p12 from a Mac or Windows machine if the browser auto-download does not trigger correctly.</p>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Install the profile</h3>
+              <p>Tap the .p12 in Files or in the email attachment. iOS will say <em>"Profile Downloaded"</em>. Then:</p>
+              <ul style="font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:300;line-height:1.9;padding-left:2rem;margin-top:0.8rem;color:#555;">
+                <li>Go to <strong>Settings → General → VPN &amp; Device Management</strong></li>
+                <li>Tap the downloaded profile under <em>Downloaded Profile</em></li>
+                <li>Tap <strong>Install</strong> → enter device passcode</li>
+                <li>Enter the .p12 certificate password when prompted</li>
+                <li>Tap <strong>Done</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Safari picks it up automatically</h3>
+              <p>No browser restart needed on iOS. Safari will present the certificate on the next visit to an entityOS-protected resource.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-android" class="tab-panel">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Open the registration page in Chrome</h3>
+              <p>Navigate to <strong>cert.register.entityos.io</strong> in Chrome on Android. Enter the security code and email, then tap <em>Generate &amp; Register Certificate</em>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Download the .p12</h3>
+              <p>The .p12 downloads to the Downloads folder. Note the password on screen.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Install the certificate</h3>
+              <p>Path varies slightly by manufacturer, but generally:</p>
+              <ul style="font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:300;line-height:1.9;padding-left:2rem;margin-top:0.8rem;color:#555;">
+                <li><strong>Settings → Security → Encryption &amp; credentials</strong></li>
+                <li>Tap <strong>Install a certificate → VPN &amp; app certificate</strong></li>
+                <li>Browse to and select the .p12 file from Downloads</li>
+                <li>Enter the .p12 password when prompted</li>
+                <li>Give it a name (e.g. <em>entityOS</em>) and tap <strong>OK</strong></li>
+              </ul>
+              <div class="note-box" style="margin-top:1.2rem">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p style="font-size:1.4rem;">On Samsung devices the path is <strong>Settings → Biometrics and security → Other security settings → Install from device storage</strong>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Chrome picks it up automatically</h3>
+              <p>Chrome on Android uses the system certificate store. Restart Chrome if the certificate is not presented immediately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MDM — TRUST -->
+<section class="section section-dark">
+  <div class="section-inner">
+    <div class="section-tag">Step 3</div>
+    <h2 class="section-title" style="color:#fff;">Deploy CA trust via MDM</h2>
+    <p style="max-width:65rem;margin-bottom:4rem;color:rgba(255,255,255,0.6);">Without the entityOS CA in the device trust store, users will see a "certificate not trusted" warning. Distributing the CA cert via MDM makes trust silent and automatic — zero user interaction required.</p>
+
+    <div class="mdm-grid">
+      <div class="mdm-card">
+        <div class="mdm-tag">Apple / Microsoft</div>
+        <h4>Microsoft Intune</h4>
+        <p>Devices → Configuration profiles → Create → macOS or Windows → Templates → Trusted certificate. Upload the CA PEM. Assign to device group → Deploy.</p>
+      </div>
+      <div class="mdm-card">
+        <div class="mdm-tag">Apple-first</div>
+        <h4>Jamf Pro</h4>
+        <p>Configuration Profiles → New → Certificate payload. Upload the CA PEM. Scope to your device group → Save → push. Works for macOS and iOS.</p>
+      </div>
+      <div class="mdm-card">
+        <div class="mdm-tag">Apple SMB</div>
+        <h4>Mosyle</h4>
+        <p>Management → Profiles → Add Profile → Certificate. Upload the CA PEM → assign to devices. Lightest-touch MDM for Apple-only environments.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:5rem;">
+      <div class="section-tag">Manual alternative (no MDM)</div>
+      <h3 style="color:#fff;font-size:2.4rem;font-weight:700;margin-bottom:2rem;">Trust the CA manually per device</h3>
+      <div class="two-col">
+        <div>
+          <p style="color:rgba(255,255,255,0.6);margin-bottom:1.5rem;">Download the entityOS CA certificate from the registration page (or obtain it from your IT team), then follow the platform steps below.</p>
+          <div class="steps">
+            <div class="step step-dark">
+              <div class="step-num">▸</div>
+              <div class="step-content">
+                <h3>macOS</h3>
+                <p style="color:rgba(255,255,255,0.55);">Double-click the <code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a">entityOS-CA.pem</code> file → Keychain Access opens → expand <strong style="color:#fff">Trust</strong> → set <em>When using this certificate</em> to <strong style="color:#39b54a">Always Trust</strong> → enter Mac password to confirm.</p>
+              </div>
+            </div>
+            <div class="step step-dark">
+              <div class="step-num">▸</div>
+              <div class="step-content">
+                <h3>Windows</h3>
+                <p style="color:rgba(255,255,255,0.55);">Double-click <code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a">entityOS-CA.pem</code> → Certificate Import Wizard → place in <strong style="color:#fff">Trusted Root Certification Authorities</strong> → Finish. Or run:</p>
+                <div class="code-block"><pre>certutil -addstore "Root" entityOS-CA.pem</pre></div>
+              </div>
+            </div>
+            <div class="step step-dark">
+              <div class="step-num">▸</div>
+              <div class="step-content">
+                <h3>iOS / iPadOS</h3>
+                <p style="color:rgba(255,255,255,0.55);">Download <code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a">entityOS-CA.pem</code> → Settings → General → VPN &amp; Device Management → install the profile → then go to <strong style="color:#fff">Settings → General → About → Certificate Trust Settings</strong> and enable full trust for the entityOS CA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="background:rgba(57,181,74,0.06);border:1px solid rgba(57,181,74,0.2);border-radius:8px;padding:3rem;">
+            <div style="font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#39b54a;margin-bottom:2rem;">CA Certificate details</div>
+            <table class="data-table" style="color:rgba(255,255,255,0.7);">
+              <tr><td style="border-bottom-color:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:1.2rem;">Common Name</td><td style="border-bottom-color:rgba(255,255,255,0.06);" class="mono">entityOS CA (lab)</td></tr>
+              <tr><td style="border-bottom-color:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:1.2rem;">Organisation</td><td style="border-bottom-color:rgba(255,255,255,0.06);">entityOS / ibCom</td></tr>
+              <tr><td style="border-bottom-color:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:1.2rem;">Algorithm</td><td style="border-bottom-color:rgba(255,255,255,0.06);" class="mono">ECDSA P-256</td></tr>
+              <tr><td style="border-bottom-color:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);font-size:1.2rem;">Valid until</td><td style="border-bottom-color:rgba(255,255,255,0.06);" class="mono">2036-05-06</td></tr>
+              <tr><td style="color:rgba(255,255,255,0.4);font-size:1.2rem;">Download</td><td><a href="https://cert.register.entityos.io" style="color:#39b54a;font-family:'Montserrat',sans-serif;font-size:1.3rem;">cert.register.entityos.io</a></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RENEWAL -->
+<section class="section section-grey">
+  <div class="section-inner">
+    <div class="section-tag">Ongoing</div>
+    <h2 class="section-title">Certificate renewal</h2>
+    <p style="max-width:65rem;margin-bottom:3rem;">Certificates are valid for 5 days. Users need to re-register before their certificate expires, or access to entityOS-protected resources will be denied.</p>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:2rem;font-weight:700;margin-bottom:1.5rem;">Recommended: notify users before expiry</h3>
+        <p style="margin-bottom:1.5rem;">Send users a renewal reminder 1–2 days before their certificate expires. The renewal process is identical to initial registration — visit the URL, enter the code, download and install the new .p12.</p>
+        <div class="note-box">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <p style="font-size:1.5rem;line-height:1.6;margin:0;">Each renewal generates a new unique CN (<code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem">entityOS-{hex}</code>) so Keychain accumulates entries over time. Old expired certs can be safely deleted from the keychain at any time.</p>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:2rem;font-weight:700;margin-bottom:1.5rem;">Revoking access</h3>
+        <p style="margin-bottom:1.5rem;">To revoke a user's ability to re-register, remove their code hash from the S3 hashes file. Their current certificate will remain valid until it expires (max 5 days), after which it cannot be renewed.</p>
+        <div class="code-block-light"><pre>entityos.invoke('util-cert-setup-code-remove', {
+  code: 'a1b2c3d4-e5f6-...'
+});</pre></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="section section-dark">
+  <div class="section-inner">
+    <div class="section-tag">Deployment checklist</div>
+    <h2 class="section-title" style="color:#fff;">Before go-live</h2>
+    <div class="two-col" style="margin-top:3rem;">
+      <div>
+        <p style="color:rgba(255,255,255,0.5);font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">IT / Infrastructure</p>
+        <ul class="checklist checklist-dark">
+          <li>entityOS CA certificate deployed to all managed devices via MDM</li>
+          <li>S3 setup bucket contains <code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a">setup/entityos-security-codes.hashes</code></li>
+          <li>Lambda IAM roles have <code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a">s3:GetObject</code> and <code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a">s3:ListBucket</code> on <code style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:#39b54a">setup/*</code></li>
+          <li>Security codes issued to all users and stored securely in IT records</li>
+          <li>Renewal reminder process documented and scheduled</li>
+          <li>Revocation process tested with a test user</li>
+        </ul>
+      </div>
+      <div>
+        <p style="color:rgba(255,255,255,0.5);font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">End user</p>
+        <ul class="checklist checklist-dark">
+          <li>Registration URL and security code received</li>
+          <li>Certificate generated and .p12 downloaded</li>
+          <li>.p12 imported into OS certificate store with correct password</li>
+          <li>entityOS CA certificate trusted (via MDM push or manual install)</li>
+          <li>Browser restarted after import</li>
+          <li>Confirmed access to an entityOS-protected resource</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="conclusion">
+  <h2>Need help with deployment?</h2>
+  <p>Contact entityOS support for assistance with MDM configuration, bulk user provisioning, or custom renewal workflows.</p>
+  <a href="mailto:hello@entityos.cloud" class="btn-primary">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    hello@entityos.cloud
+  </a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="nav-logo" style="font-size:1.6rem;">entityOS</span>
+    <span class="footer-copy">© ibCom Pty Ltd · ISO 27001/17 · hello@entityos.cloud</span>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', function() {
+  var pct = Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100);
+  document.getElementById('progress').style.width = pct + '%';
+});
+
+// Header scroll
+window.addEventListener('scroll', function() {
+  document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Tabs
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
