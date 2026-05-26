@@ -1,0 +1,724 @@
+---
+layout: null
+title: Practical IT Guide - IP & mTLS Access Options - entityOS.io
+permalink: /security/implementation/guide
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="shortcut icon" type="image/png" href="data:image/png;base64,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">
+<title>IT Guide — Choosing IP Restriction or mTLS — entityOS Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 10px; scroll-behavior: smooth; }
+body { font-family: 'Lora', serif; font-size: 1.7rem; line-height: 1.765; color: #757575; background: #111; overflow-x: hidden; }
+a { color: #0087cc; text-decoration: none; }
+
+#progress { position: fixed; top: 0; left: 0; height: 4px; z-index: 900; background: #39b54a; width: 0; transition: width 0.1s; }
+
+.s-header { width: 100%; height: 88px; background: transparent; position: fixed; top: 0; z-index: 500; display: flex; align-items: center; padding: 0 48px; justify-content: space-between; transition: background 0.3s; }
+.s-header.opaque { background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+.header-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2rem; color: #39b54a; }
+.header-nav { display: flex; align-items: center; gap: 3.2rem; list-style: none; }
+.header-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .2rem; color: rgba(255,255,255,0.6); }
+.header-nav a:hover { color: #fff; }
+.btn-nav { background: #39b54a !important; color: #fff !important; padding: .9rem 2.4rem; border-radius: 2px; }
+
+.row { width: 94%; max-width: 1160px; margin: 0 auto; }
+
+.subhead { font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: .28rem; }
+.subhead--green { color: #39b54a; }
+.subhead--dim { color: rgba(255,255,255,0.28); }
+.subhead--dark { color: rgba(0,0,0,0.42); }
+.display-2 { font-family: 'Montserrat', sans-serif; font-size: 4.2rem; font-weight: 500; line-height: 1.2; letter-spacing: -.05rem; color: #000; }
+.display-2--light { color: #fff; }
+
+.rev { opacity: 0; transform: translateY(18px); transition: opacity 0.5s, transform 0.5s; }
+.rev.on { opacity: 1; transform: none; }
+
+.btn { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: .25rem; height: 5.2rem; line-height: 4.8rem; padding: 0 2.8rem; color: #fff; border: .2rem solid #fff; background: transparent; transition: all 0.3s; }
+.btn:hover { background: #fff; color: #000; }
+.btn--primary { background: #39b54a; border-color: #39b54a; }
+.btn--primary:hover { background: #2ea03d; border-color: #2ea03d; color: #fff; }
+
+/* HERO */
+.s-hero { background: #0c0c0c; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 88px; }
+.s-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(57,181,74,0.07) 1px, transparent 1px); background-size: 30px 30px; }
+.hero-content { position: relative; z-index: 1; padding: 9rem 0 11rem; }
+.hero-label { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #39b54a; letter-spacing: .08rem; margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1rem; }
+.hero-label::before { content: ''; display: block; width: 28px; height: 2px; background: #39b54a; }
+.hero-h1 { font-family: 'Montserrat', sans-serif; font-size: 5.4rem; font-weight: 500; line-height: 1.15; letter-spacing: -.06rem; color: #fff; margin-bottom: 2.8rem; max-width: 820px; }
+.hero-h1 .green { color: #39b54a; }
+.hero-sub { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 300; color: rgba(255,255,255,0.42); line-height: 1.7; max-width: 660px; margin-bottom: 4.4rem; }
+.hero-ctas { display: flex; gap: 1.8rem; flex-wrap: wrap; align-items: center; }
+.scroll-line { position: absolute; right: 8rem; bottom: 5rem; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+.scroll-line span { font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 600; text-transform: uppercase; letter-spacing: .2rem; color: rgba(255,255,255,0.25); writing-mode: vertical-rl; }
+.green-bar { display: block; width: 2px; height: 8rem; background: #39b54a; }
+
+/* GREEN STRIP — AT A GLANCE */
+.s-glance { background: #39b54a; padding: 9rem 0 8rem; position: relative; overflow: hidden; }
+.s-glance::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 26px 26px; }
+.glance-header { text-align: center; margin-bottom: 5rem; position: relative; z-index: 1; }
+.glance-header .display-2 { color: #010507; }
+.glance-header > p { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 300; color: rgba(0,0,0,0.6); max-width: 620px; margin: 1.4rem auto 0; line-height: 1.65; }
+.glance-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; position: relative; z-index: 1; }
+.glance-col { background: rgba(0,0,0,0.08); padding: 3.6rem 4rem; }
+.glance-col-label { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2rem; margin-bottom: 1.6rem; color: rgba(0,0,0,0.8); }
+.glance-col h3 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 700; color: #010507; margin-bottom: 1.2rem; }
+.glance-col p { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 300; color: rgba(0,0,0,0.65); line-height: 1.65; margin-bottom: 2rem; }
+.glance-col ul { list-style: none; }
+.glance-col ul li { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 400; color: rgba(0,0,0,0.65); padding: .7rem 0; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; align-items: flex-start; gap: 1rem; }
+.glance-col ul li:last-child { border-bottom: none; }
+.li-dot { color: #010507; font-weight: 700; flex-shrink: 0; }
+
+/* DECISION SECTION (white) */
+.s-decision { background: #fff; padding: 10rem 0; }
+.s-decision .section-header { margin-bottom: 5.6rem; }
+.section-header p { margin-top: 1.4rem; max-width: 620px; font-family: 'Montserrat', sans-serif; font-size: 1.55rem; font-weight: 300; color: #757575; line-height: 1.7; }
+.decision-tree { display: flex; flex-direction: column; gap: 2px; }
+.dt-q { background: #0a0a0a; padding: 2.8rem 3.4rem; border-left: 4px solid #39b54a; }
+.dt-q-label { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #39b54a; text-transform: uppercase; letter-spacing: .2rem; margin-bottom: 1rem; }
+.dt-q-text { font-family: 'Montserrat', sans-serif; font-size: 1.95rem; font-weight: 600; color: #fff; line-height: 1.4; }
+.dt-answers { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.dt-a { background: #f5f5f5; padding: 2.6rem 3rem; border-top: 3px solid #c8e9cd; }
+.dt-a-cond { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12rem; color: #39b54a; margin-bottom: 1rem; }
+.dt-a-result { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 600; color: #000; margin-bottom: .8rem; }
+.dt-a-detail { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 300; color: #757575; line-height: 1.6; }
+
+/* MATRIX (dark) */
+.s-matrix { background: #111111; padding: 10rem 0; }
+.s-matrix .section-header { margin-bottom: 5rem; }
+.s-matrix .section-header p { color: rgba(255,255,255,0.38); }
+.matrix-wrap { overflow-x: auto; }
+table.matrix { width: 100%; border-collapse: collapse; background: #0a0a0a; min-width: 720px; }
+table.matrix th { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .15rem; background: #181818; color: #fff; padding: 1.8rem 2rem; text-align: left; border-bottom: 2px solid #39b54a; }
+table.matrix th.green-header { color: #39b54a; }
+table.matrix td { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1.35rem; color: rgba(255,255,255,0.5); padding: 1.7rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; line-height: 1.55; }
+table.matrix td:first-child { font-weight: 600; color: #fff; }
+table.matrix tr:last-child td { border-bottom: none; }
+.pill { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08rem; padding: .4rem 1rem; border-radius: 2px; display: inline-block; }
+.pill-ip { color: #d040b0; border: 1px solid rgba(208,64,176,0.4); }
+.pill-mtls { color: #8040cc; border: 1px solid rgba(128,64,204,0.45); }
+.pill-both { color: #39b54a; border: 1px solid rgba(57,181,74,0.4); }
+
+/* PLAYBOOKS (grey) */
+.s-playbooks { background: #e6e6e6; padding: 10rem 0; }
+.s-playbooks .section-header { margin-bottom: 5.4rem; }
+.pb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.pb-card { background: #fff; padding: 3.8rem 3.6rem; border-top: 3px solid #39b54a; }
+.pb-tag { font-family: 'JetBrains Mono', monospace; font-size: .95rem; color: #39b54a; text-transform: uppercase; letter-spacing: .12rem; margin-bottom: 1.2rem; }
+.pb-card h4 { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 600; color: #000; margin-bottom: .8rem; }
+.pb-card > p { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 300; color: #757575; line-height: 1.65; margin-bottom: 2.4rem; }
+.pb-steps { list-style: none; counter-reset: pb; }
+.pb-steps li { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 400; color: #444; padding: 1rem 0 1rem 3.6rem; border-bottom: 1px solid #f0f0f0; position: relative; line-height: 1.55; counter-increment: pb; }
+.pb-steps li:last-child { border-bottom: none; }
+.pb-steps li::before { content: counter(pb); position: absolute; left: 0; top: 1rem; width: 2.4rem; height: 2.4rem; background: #f0faf2; border: 1px solid #c8e9cd; color: #39b54a; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 500; display: flex; align-items: center; justify-content: center; border-radius: 3px; }
+.pb-steps li strong { color: #000; font-weight: 600; }
+
+/* PREREQUISITES (dark, trust-layer style) */
+.s-prereq { background: #151515; padding: 10rem 0; }
+.s-prereq .section-header { margin-bottom: 5.4rem; }
+.s-prereq .section-header p { color: rgba(255,255,255,0.35); }
+.layer { display: flex; align-items: stretch; margin-bottom: 2px; }
+.layer-accent { width: 4px; background: #39b54a; flex-shrink: 0; }
+.layer-body { flex: 1; padding: 2.4rem 3.4rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 3.2rem; flex-wrap: wrap; }
+.layer-icon { width: 46px; height: 46px; border-radius: 8px; background: rgba(57,181,74,0.1); border: 1px solid rgba(57,181,74,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.layer-icon svg { width: 22px; height: 22px; stroke: #39b54a; stroke-width: 1.75; fill: none; }
+.layer-content { flex: 1; min-width: 240px; }
+.layer-title { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+.layer-desc { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.6; }
+.layer-tag { font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1rem; color: #39b54a; border: 1px solid rgba(57,181,74,0.3); padding: .4rem 1.1rem; white-space: nowrap; flex-shrink: 0; }
+
+/* OPERATIONS CHECKLIST (white) */
+.s-ops { background: #fff; padding: 10rem 0; }
+.s-ops .section-header { margin-bottom: 5.4rem; }
+.ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.ops-card { background: #fafafa; padding: 3.2rem 3rem; border-top: 3px solid #39b54a; }
+.ops-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 600; color: #000; margin-bottom: 1.6rem; }
+.ops-list { list-style: none; }
+.ops-list li { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 400; color: #555; padding: .85rem 0 .85rem 2.6rem; border-bottom: 1px solid #efefef; position: relative; line-height: 1.5; }
+.ops-list li:last-child { border-bottom: none; }
+.ops-list li svg { position: absolute; left: 0; top: 1.3rem; width: 14px; height: 14px; stroke: #39b54a; stroke-width: 2.5; fill: none; }
+
+/* PITFALLS (grey) */
+.s-pitfalls { background: #e6e6e6; padding: 10rem 0; }
+.s-pitfalls .section-header { margin-bottom: 5rem; }
+.pit-list { display: flex; flex-direction: column; gap: 2px; }
+.pit-row { background: #fff; padding: 2.8rem 3.4rem; border-left: 4px solid #cc4444; display: flex; gap: 2.8rem; align-items: flex-start; flex-wrap: wrap; }
+.pit-icon { width: 40px; height: 40px; border-radius: 8px; background: rgba(204,68,68,0.08); border: 1px solid rgba(204,68,68,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.pit-icon svg { width: 20px; height: 20px; stroke: #cc4444; stroke-width: 1.9; fill: none; }
+.pit-content { flex: 1; min-width: 260px; }
+.pit-title { font-family: 'Montserrat', sans-serif; font-size: 1.65rem; font-weight: 600; color: #000; margin-bottom: .5rem; }
+.pit-desc { font-family: 'Montserrat', sans-serif; font-size: 1.38rem; font-weight: 300; color: #757575; line-height: 1.62; }
+.pit-fix { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 500; color: #39b54a; margin-top: .8rem; }
+
+/* CONCLUSION */
+.s-conclusion { background: #0c0c0c; padding: 14rem 0 10rem; position: relative; }
+.concl-line { display: block; width: 2px; height: 10rem; background: #39b54a; position: absolute; left: 50%; top: 0; margin-left: -1px; }
+.concl-inner { text-align: center; max-width: 660px; margin: 0 auto; }
+.concl-inner p { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 300; color: rgba(255,255,255,0.42); margin: 1.8rem 0 4rem; line-height: 1.75; }
+.concl-ctas { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; }
+.key-box { margin-top: 5.6rem; padding: 2.8rem 3.6rem; border-left: 4px solid #39b54a; background: rgba(0,0,0,0.3); font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.75; text-align: left; }
+.key-box strong { color: #39b54a; }
+
+footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.6rem; }
+.footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; color: rgba(57,181,74,0.65); }
+.footer-copy { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; color: rgba(255,255,255,0.18); line-height: 1.9; text-align: right; }
+.footer-copy a { color: rgba(255,255,255,0.22); }
+
+@media (max-width: 860px) {
+  .hero-h1 { font-size: 3.6rem; }
+  .glance-cols, .dt-answers, .pb-grid, .ops-grid { grid-template-columns: 1fr; }
+  .display-2 { font-size: 3rem; }
+  .s-header { padding: 0 24px; }
+  .header-nav { gap: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="s-header" id="site-header">
+  <div class="header-logo">entityOS</div>
+  <nav>
+    <ul class="header-nav">
+      <li><a href="#decide">Decide</a></li>
+      <li><a href="#matrix">User Types</a></li>
+      <li><a href="#playbooks">Rollout</a></li>
+      <li><a href="https://www.entityos.io/security/implementation/technical" class="btn-nav">Architecture</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="s-hero">
+  <div class="row hero-content">
+    <div class="hero-label">entityOS Security — Practical IT Guide</div>
+    <h1 class="hero-h1 rev">Choosing <span class="green">IP restriction</span> or <span class="green">mTLS</span> for your organisation.</h1>
+    <p class="hero-sub rev">A working guide for IT teams. How to pick the right access mechanism for each user type, what to prepare before you start, and how to roll it out without locking anyone out.</p>
+    <div class="hero-ctas rev">
+      <a href="#decide" class="btn btn--primary">Start the Decision</a>
+      <a href="#playbooks" class="btn">Rollout Playbooks</a>
+    </div>
+  </div>
+  <div class="scroll-line">
+    <span>Scroll</span>
+    <span class="green-bar"></span>
+  </div>
+</section>
+
+<!-- GREEN STRIP — AT A GLANCE -->
+<section class="s-glance">
+  <div class="row">
+    <div class="glance-header rev">
+      <p class="subhead subhead--dark">The Two Options</p>
+      <h2 class="display-2">Two mechanisms. Pick per user.</h2>
+      <p>Both protect the same restricted surface — <span style="font-family:'JetBrains Mono',monospace; font-size:1.4rem;">entityos.cloud</span>. They are independent, not sequential. You can run both at once.</p>
+    </div>
+    <div class="glance-cols">
+      <div class="glance-col rev">
+        <div class="glance-col-label">Option A — IP Restriction</div>
+        <h3>Allowlist the network location</h3>
+        <p>The device registers its public IP address. That IP is synced to the restricted firewall's IP Set. Any connection from that IP is admitted — no certificate, no client software.</p>
+        <ul>
+          <li><span class="li-dot">→</span> Best for fixed offices and static IP ranges</li>
+          <li><span class="li-dot">→</span> Zero per-device setup once the IP is registered</li>
+          <li><span class="li-dot">→</span> Trust is tied to the location, not the user</li>
+          <li><span class="li-dot">→</span> Breaks if the ISP changes the IP — re-register</li>
+        </ul>
+      </div>
+      <div class="glance-col rev">
+        <div class="glance-col-label">Option B — mTLS / X.509</div>
+        <h3>Issue a certificate to the device</h3>
+        <p>The device registers a certificate signing request. entityOS CA signs it. The device presents the certificate on every connection. The firewall validates it — the IP can be anything.</p>
+        <ul>
+          <li><span class="li-dot">→</span> Best for laptops and roaming or remote users</li>
+          <li><span class="li-dot">→</span> Trust travels with the device, not the network</li>
+          <li><span class="li-dot">→</span> Per-device install + rotation to manage</li>
+          <li><span class="li-dot">→</span> A lost device is handled by revoking one cert</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION -->
+<section class="s-decision" id="decide">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--green">Step 1 — Decide</p>
+      <h2 class="display-2">A four-question decision path.</h2>
+      <p>Run these questions per user group — not for the whole organisation at once. Most organisations land on a mix.</p>
+    </div>
+
+    <div class="decision-tree">
+      <div class="rev">
+        <div class="dt-q">
+          <div class="dt-q-label">Question 1</div>
+          <div class="dt-q-text">Does this user group always connect from a known, fixed network?</div>
+        </div>
+        <div class="dt-answers">
+          <div class="dt-a">
+            <div class="dt-a-cond">Yes — office or static IP</div>
+            <div class="dt-a-result">Lean toward IP Restriction</div>
+            <div class="dt-a-detail">Office desktops behind a static public IP, or a site with a fixed ISP range. Continue to Question 2 to confirm.</div>
+          </div>
+          <div class="dt-a">
+            <div class="dt-a-cond">No — they roam</div>
+            <div class="dt-a-result">Lean toward mTLS</div>
+            <div class="dt-a-detail">Laptops used from home, cafes, or client sites. The IP changes constantly, so location-based trust will not work. Skip to Question 3.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rev">
+        <div class="dt-q">
+          <div class="dt-q-label">Question 2</div>
+          <div class="dt-q-text">Is that fixed IP genuinely stable, or does the ISP rotate it?</div>
+        </div>
+        <div class="dt-answers">
+          <div class="dt-a">
+            <div class="dt-a-cond">Confirmed static</div>
+            <div class="dt-a-result">IP Restriction is sufficient</div>
+            <div class="dt-a-detail">A business-grade static IP or a documented CIDR range. Register it once and the group needs no client-side change.</div>
+          </div>
+          <div class="dt-a">
+            <div class="dt-a-cond">Dynamic / unknown</div>
+            <div class="dt-a-result">Use mTLS instead</div>
+            <div class="dt-a-detail">A dynamic residential or consumer IP will silently change and lock the group out. Treat them as roaming and issue certificates.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rev">
+        <div class="dt-q">
+          <div class="dt-q-label">Question 3</div>
+          <div class="dt-q-text">Can you deploy and manage certificates on these devices?</div>
+        </div>
+        <div class="dt-answers">
+          <div class="dt-a">
+            <div class="dt-a-cond">Yes — managed fleet</div>
+            <div class="dt-a-result">mTLS is the right fit</div>
+            <div class="dt-a-detail">Devices are enrolled in an MDM, Intune, or GPO that can push the certificate and the registration helper. Rotation can be automated.</div>
+          </div>
+          <div class="dt-a">
+            <div class="dt-a-cond">No — unmanaged devices</div>
+            <div class="dt-a-result">Reconsider scope</div>
+            <div class="dt-a-detail">If a device cannot hold a managed certificate, it should not reach the restricted zone. Provide a managed device, or keep that user in the open zone only.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rev">
+        <div class="dt-q">
+          <div class="dt-q-label">Question 4</div>
+          <div class="dt-q-text">Does this group handle data that warrants a second, independent check?</div>
+        </div>
+        <div class="dt-answers">
+          <div class="dt-a">
+            <div class="dt-a-cond">Standard sensitivity</div>
+            <div class="dt-a-result">One mechanism is enough</div>
+            <div class="dt-a-detail">Use whichever the answers above pointed to. A single passing rule admits the connection.</div>
+          </div>
+          <div class="dt-a">
+            <div class="dt-a-cond">High sensitivity</div>
+            <div class="dt-a-result">Combine IP Set + mTLS</div>
+            <div class="dt-a-detail">Require both checks to pass for the same connection. A stolen certificate alone — or a spoofed IP alone — is not enough to get in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATRIX -->
+<section class="s-matrix" id="matrix">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--dim">Step 2 — Map Your Users</p>
+      <h2 class="display-2 display-2--light">A recommendation for every user type.</h2>
+      <p>The common patterns IT teams encounter, with the mechanism that fits each. Use it as a starting template, then adjust per Question 4.</p>
+    </div>
+    <div class="matrix-wrap rev">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>User / device type</th>
+            <th>Network pattern</th>
+            <th class="green-header">Recommended</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Office desktops</td>
+            <td>Fixed corporate LAN, static public IP</td>
+            <td><span class="pill pill-ip">IP Restriction</span></td>
+            <td>Location never changes. Register the office IP once; no per-device work.</td>
+          </tr>
+          <tr>
+            <td>Branch / site offices</td>
+            <td>Each site on its own static range</td>
+            <td><span class="pill pill-ip">IP Restriction</span></td>
+            <td>Register each site's CIDR range. Adding a site is one IP entry.</td>
+          </tr>
+          <tr>
+            <td>Remote-work laptops</td>
+            <td>Home, cafe, client site — dynamic IP</td>
+            <td><span class="pill pill-mtls">mTLS</span></td>
+            <td>IP is unpredictable. A device certificate travels with the laptop.</td>
+          </tr>
+          <tr>
+            <td>Travelling / field staff</td>
+            <td>Mobile networks, hotspots, hotels</td>
+            <td><span class="pill pill-mtls">mTLS</span></td>
+            <td>No fixed location at all. Certificate identity is the only workable basis.</td>
+          </tr>
+          <tr>
+            <td>Servers &amp; service accounts</td>
+            <td>Fixed data-centre / cloud IP</td>
+            <td><span class="pill pill-both">IP + mTLS</span></td>
+            <td>Non-interactive and high-value. Pin both the IP and a service certificate.</td>
+          </tr>
+          <tr>
+            <td>Admin / privileged access</td>
+            <td>Any — high sensitivity</td>
+            <td><span class="pill pill-both">IP + mTLS</span></td>
+            <td>Require both checks so a single stolen credential cannot grant entry.</td>
+          </tr>
+          <tr>
+            <td>Contractors / third parties</td>
+            <td>Unmanaged or external devices</td>
+            <td><span class="pill pill-mtls">mTLS</span></td>
+            <td>Issue a short-lived certificate; revoke it the day the engagement ends.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYBOOKS -->
+<section class="s-playbooks" id="playbooks">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--green">Step 3 — Roll It Out</p>
+      <h2 class="display-2">Three rollout playbooks.</h2>
+      <p>Pick the playbook that matches your decision. Each is sequenced so no user is locked out mid-rollout — the restricted firewall stays permissive until the last step.</p>
+    </div>
+    <div class="pb-grid">
+      <div class="pb-card rev">
+        <div class="pb-tag">Playbook A</div>
+        <h4>Deploy IP Restriction</h4>
+        <p>For office and static-IP user groups. No client-side changes — the work is registration and firewall configuration.</p>
+        <ol class="pb-steps">
+          <li><strong>Inventory IPs.</strong> Confirm each office or site's public IP or CIDR range with the network owner, in writing.</li>
+          <li><strong>Register IPs.</strong> Submit each IP and the pre-exchanged security code through register.entityos.io.</li>
+          <li><strong>Confirm sync.</strong> Verify each IP has propagated into the restricted firewall's IP Set.</li>
+          <li><strong>Test in parallel.</strong> Connect from a registered IP and confirm access while the firewall is still open.</li>
+          <li><strong>Close the zone.</strong> Remove the 0.0.0.0/0 inbound rule so only registered IPs are admitted.</li>
+          <li><strong>Validate.</strong> Confirm registered IPs pass and an unregistered IP is dropped silently.</li>
+        </ol>
+      </div>
+      <div class="pb-card rev">
+        <div class="pb-tag">Playbook B</div>
+        <h4>Deploy mTLS / X.509</h4>
+        <p>For roaming and remote user groups. The work is certificate issuance, distribution, and lifecycle.</p>
+        <ol class="pb-steps">
+          <li><strong>Stand up the CA.</strong> Provision entityOS CA (AWS Private CA or entityOS-managed) as the signing authority.</li>
+          <li><strong>Issue certificates.</strong> Each device submits a CSR plus its security code; entityOS CA signs and returns the X.509 cert.</li>
+          <li><strong>Distribute.</strong> Push the signed cert to each device via MDM, Intune, or GPO into the system trust store.</li>
+          <li><strong>Enable the rule.</strong> Add the X.509 Certs rule on the restricted firewall and enforce mutual TLS at the API gateway.</li>
+          <li><strong>Pilot then expand.</strong> Validate one device end-to-end, then roll the rest in batches.</li>
+          <li><strong>Schedule rotation.</strong> Set a renewal cadence and a revocation path for lost or retired devices.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="pb-grid" style="grid-template-columns:1fr; margin-top:2px;">
+      <div class="pb-card rev" style="border-top-color:#39b54a;">
+        <div class="pb-tag">Playbook C — Combined</div>
+        <h4>Run IP Restriction and mTLS together</h4>
+        <p>For a mixed organisation, or for high-sensitivity groups that need both checks. The two rules are independent — your policy decides whether a connection must pass one, the other, or both.</p>
+        <ol class="pb-steps">
+          <li><strong>Segment first.</strong> Use the matrix above to assign each user group to IP-only, mTLS-only, or both.</li>
+          <li><strong>Run Playbook A and Playbook B in parallel.</strong> They share one registration surface and one CA — there is no ordering dependency between them.</li>
+          <li><strong>Set the policy per group.</strong> For high-sensitivity groups, require IP Set <em>and</em> X.509 to pass for the same connection.</li>
+          <li><strong>Verify each path.</strong> Test an office desktop (IP passes), a remote laptop (cert passes), and a privileged session (both required).</li>
+          <li><strong>Close the zone last.</strong> Only remove the open inbound rule once every group has a verified working path.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREREQUISITES -->
+<section class="s-prereq">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--dim">Before You Start</p>
+      <h2 class="display-2 display-2--light">Prerequisites checklist.</h2>
+      <p>Confirm each of these is in place before touching the restricted firewall. Missing one is the most common cause of a stalled rollout.</p>
+    </div>
+
+    <div class="rev">
+      <div class="layer">
+        <div class="layer-accent"></div>
+        <div class="layer-body">
+          <div class="layer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="layer-content">
+            <div class="layer-title">Registration surface is live</div>
+            <div class="layer-desc">register.entityos.io is reachable from the open zone and accepts IP submissions and CSRs. This is the controlled onramp for both mechanisms.</div>
+          </div>
+          <div class="layer-tag">Both</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="layer">
+        <div class="layer-accent"></div>
+        <div class="layer-body">
+          <div class="layer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <div class="layer-content">
+            <div class="layer-title">Security codes are issued</div>
+            <div class="layer-desc">Every device or site has a pre-exchanged unique security code. This is what prevents unauthenticated bulk registration — issue codes through your normal onboarding channel.</div>
+          </div>
+          <div class="layer-tag">Both</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="layer">
+        <div class="layer-accent"></div>
+        <div class="layer-body">
+          <div class="layer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4"/><rect x="2" y="18" width="6" height="4"/><rect x="16" y="18" width="6" height="4"/><path d="M12 6v4M6 18v-2a6 6 0 0 1 12 0v2"/></svg>
+          </div>
+          <div class="layer-content">
+            <div class="layer-title">Public IPs are documented</div>
+            <div class="layer-desc">For any IP-restricted group, the office or site public IP — or CIDR range — is confirmed in writing with the network owner and known to be static.</div>
+          </div>
+          <div class="layer-tag">IP Restriction</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="layer">
+        <div class="layer-accent"></div>
+        <div class="layer-body">
+          <div class="layer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+          </div>
+          <div class="layer-content">
+            <div class="layer-title">Certificate authority is provisioned</div>
+            <div class="layer-desc">For any mTLS group, entityOS CA (AWS Private CA or entityOS-managed) is stood up and able to sign X.509 certificates returned from the registration pipeline.</div>
+          </div>
+          <div class="layer-tag">mTLS</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="layer">
+        <div class="layer-accent"></div>
+        <div class="layer-body">
+          <div class="layer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M8 18h2"/><path d="M9 22H5a2 2 0 0 1-2-2"/><rect x="16" y="8" width="6" height="10" rx="2"/><path d="M19 18v0"/></svg>
+          </div>
+          <div class="layer-content">
+            <div class="layer-title">Device management is in place</div>
+            <div class="layer-desc">For any mTLS group, an MDM, Intune, or GPO can push the certificate into the device trust store and run the registration helper without per-user manual steps.</div>
+          </div>
+          <div class="layer-tag">mTLS</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev">
+      <div class="layer">
+        <div class="layer-accent"></div>
+        <div class="layer-body">
+          <div class="layer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="layer-content">
+            <div class="layer-title">A rollback path is agreed</div>
+            <div class="layer-desc">You can re-open the restricted firewall quickly if a group is locked out. Confirm who can make that change and how, before you close the zone.</div>
+          </div>
+          <div class="layer-tag">Both</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATIONS -->
+<section class="s-ops">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--green">Step 4 — Operate</p>
+      <h2 class="display-2">Keeping it running.</h2>
+      <p>Access control is not a one-time project. These are the recurring tasks that keep both mechanisms healthy after go-live.</p>
+    </div>
+    <div class="ops-grid">
+      <div class="ops-card rev">
+        <h4>IP Restriction — ongoing</h4>
+        <ul class="ops-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Re-register when an ISP changes an office IP</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Add a new site's range as part of site setup</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Remove ranges for closed or relocated offices</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Review the IP Set quarterly against the office list</li>
+        </ul>
+      </div>
+      <div class="ops-card rev">
+        <h4>mTLS — ongoing</h4>
+        <ul class="ops-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Renew certificates before expiry on a set cadence</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Revoke immediately on a lost or stolen device</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Issue a cert as part of device onboarding</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Revoke on offboarding before the device is wiped</li>
+        </ul>
+      </div>
+      <div class="ops-card rev">
+        <h4>Both — ongoing</h4>
+        <ul class="ops-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Reconcile registered access against active staff</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Watch firewall drops for failed legitimate access</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Keep a runbook for the lockout / rollback case</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Re-confirm group-to-mechanism mapping each review</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PITFALLS -->
+<section class="s-pitfalls">
+  <div class="row">
+    <div class="section-header rev">
+      <p class="subhead subhead--dark">Watch Out For</p>
+      <h2 class="display-2">Common pitfalls — and the fix.</h2>
+      <p>The mistakes that most often disrupt an IP or mTLS rollout. Each is avoidable with one preventive step.</p>
+    </div>
+    <div class="pit-list">
+      <div class="pit-row rev">
+        <div class="pit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pit-content">
+          <div class="pit-title">Treating a dynamic IP as static</div>
+          <div class="pit-desc">A residential or consumer connection looks fixed for weeks, then the ISP rotates it and the whole group is locked out without warning.</div>
+          <div class="pit-fix">Fix — confirm a business static IP in writing, or default the group to mTLS.</div>
+        </div>
+      </div>
+      <div class="pit-row rev">
+        <div class="pit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pit-content">
+          <div class="pit-title">Closing the zone before testing</div>
+          <div class="pit-desc">Removing the open inbound rule before every group has a verified path means the first failure is a live lockout, not a test result.</div>
+          <div class="pit-fix">Fix — keep the firewall permissive until every group passes a parallel test.</div>
+        </div>
+      </div>
+      <div class="pit-row rev">
+        <div class="pit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pit-content">
+          <div class="pit-title">No certificate rotation plan</div>
+          <div class="pit-desc">Certificates issued without a renewal schedule all expire around the same date — and a fleet-wide outage arrives with no warning.</div>
+          <div class="pit-fix">Fix — set the renewal cadence and revocation path before the first cert is issued.</div>
+        </div>
+      </div>
+      <div class="pit-row rev">
+        <div class="pit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pit-content">
+          <div class="pit-title">Forcing one mechanism on everyone</div>
+          <div class="pit-desc">Mandating mTLS for office desktops adds needless overhead; mandating IP restriction for roaming laptops simply will not work.</div>
+          <div class="pit-fix">Fix — assign the mechanism per user group using the matrix, not org-wide.</div>
+        </div>
+      </div>
+      <div class="pit-row rev">
+        <div class="pit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pit-content">
+          <div class="pit-title">Certificates that outlive the device</div>
+          <div class="pit-desc">A laptop is wiped or retired but its certificate is never revoked, leaving a valid credential unaccounted for.</div>
+          <div class="pit-fix">Fix — make certificate revocation a required step in device offboarding.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="s-conclusion">
+  <span class="concl-line"></span>
+  <div class="row">
+    <div class="concl-inner rev">
+      <p class="subhead subhead--dim">In Short</p>
+      <h2 class="display-2 display-2--light">Match the mechanism to the access pattern.</h2>
+      <p>IP restriction for fixed locations. mTLS for roaming devices. Both where the data warrants it. Decide per user group, prepare the prerequisites, test before you close the zone.</p>
+      <div class="concl-ctas">
+        <a href="https://www.entityos.io/security/implementation/technical" class="btn btn--primary">Full Architecture</a>
+        <a href="https://www.entityos.io/security/the-solution" class="btn">The Solution</a>
+      </div>
+      <div class="key-box rev">
+        The two mechanisms are <strong>independent — not sequential</strong>. You do not roll out one before the other. A single organisation runs office desktops on IP allowlisting and roaming laptops on mTLS certificates at the same time, against the same restricted firewall — and requires <strong>both</strong> for its most sensitive groups. The combination is decided by each group's access pattern, not a mandated order.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="row">
+    <div class="footer-row">
+      <div class="footer-logo">entityOS</div>
+      <div class="footer-copy">
+        Practical IT Guide — entityOS Security Access Options<br>
+        <a href="https://docs.entityos.cloud/protect">ISO 27001/17 Certified</a> · ibCom Pty Ltd, Australia · <a href="mailto:hello@entityos.cloud">hello@entityos.cloud</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('progress').style.width =
+      Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100) + '%';
+    document.getElementById('site-header').classList.toggle('opaque', window.scrollY > 80);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rev').forEach((el, i) => {
+    el.style.transitionDelay = (i % 5) * 0.07 + 's';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
