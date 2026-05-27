@@ -139,7 +139,7 @@ table.matrix tr:last-child td { border-bottom: none; }
 /* OPERATIONS CHECKLIST (white) */
 .s-ops { background: #fff; padding: 10rem 0; }
 .s-ops .section-header { margin-bottom: 5.4rem; }
-.ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.ops-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
 .ops-card { background: #fafafa; padding: 3.2rem 3rem; border-top: 3px solid #39b54a; }
 .ops-card h4 { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 600; color: #000; margin-bottom: 1.6rem; }
 .ops-list { list-style: none; }
@@ -256,7 +256,7 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
   <div class="row">
     <div class="section-header rev">
       <p class="subhead subhead--green">Step 1 — Decide</p>
-      <h2 class="display-2">A four-question decision path.</h2>
+      <h2 class="display-2">A three-question decision path.</h2>
       <p>Run these questions per user group — not for the whole organisation at once. Most organisations land on a mix.</p>
     </div>
 
@@ -317,25 +317,6 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
           </div>
         </div>
       </div>
-
-      <div class="rev">
-        <div class="dt-q">
-          <div class="dt-q-label">Question 4</div>
-          <div class="dt-q-text">Does this group handle data that warrants a second, independent check?</div>
-        </div>
-        <div class="dt-answers">
-          <div class="dt-a">
-            <div class="dt-a-cond">Standard sensitivity</div>
-            <div class="dt-a-result">One mechanism is enough</div>
-            <div class="dt-a-detail">Use whichever the answers above pointed to. A single passing rule admits the connection.</div>
-          </div>
-          <div class="dt-a">
-            <div class="dt-a-cond">High sensitivity</div>
-            <div class="dt-a-result">Combine IP Set + mTLS</div>
-            <div class="dt-a-detail">Require both checks to pass for the same connection. A stolen certificate alone — or a spoofed IP alone — is not enough to get in.</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -346,7 +327,7 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
     <div class="section-header rev">
       <p class="subhead subhead--dim">Step 2 — Map Your Users</p>
       <h2 class="display-2 display-2--light">A recommendation for every user type.</h2>
-      <p>The common patterns IT teams encounter, with the mechanism that fits each. Use it as a starting template, then adjust per Question 4.</p>
+      <p>The common patterns IT teams encounter, with the mechanism that fits each. Use it as a starting template, then adjust to your organisation's groups.</p>
     </div>
     <div class="matrix-wrap rev">
       <table class="matrix">
@@ -394,12 +375,6 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
             <td>Any — high sensitivity</td>
             <td><span class="pill pill-both">IP + mTLS</span></td>
             <td>Require both checks so a single stolen credential cannot grant entry.</td>
-          </tr>
-          <tr>
-            <td>Contractors / third parties</td>
-            <td>Unmanaged or external devices</td>
-            <td><span class="pill pill-mtls">mTLS</span></td>
-            <td>Issue a short-lived certificate; revoke it the day the engagement ends.</td>
           </tr>
         </tbody>
       </table>
@@ -522,22 +497,6 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
         <div class="layer-accent"></div>
         <div class="layer-body">
           <div class="layer-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
-          </div>
-          <div class="layer-content">
-            <div class="layer-title">Certificate authority is provisioned</div>
-            <div class="layer-desc">For any mTLS group, entityOS CA (AWS Private CA or entityOS-managed) is stood up and able to sign X.509 certificates returned from the registration pipeline.</div>
-          </div>
-          <div class="layer-tag">mTLS</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rev">
-      <div class="layer">
-        <div class="layer-accent"></div>
-        <div class="layer-body">
-          <div class="layer-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M8 18h2"/><path d="M9 22H5a2 2 0 0 1-2-2"/><rect x="16" y="8" width="6" height="10" rx="2"/><path d="M19 18v0"/></svg>
           </div>
           <div class="layer-content">
@@ -545,22 +504,6 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
             <div class="layer-desc">For any mTLS group, an MDM, Intune, or GPO can push the certificate into the device trust store and run the registration helper without per-user manual steps.</div>
           </div>
           <div class="layer-tag">mTLS</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rev">
-      <div class="layer">
-        <div class="layer-accent"></div>
-        <div class="layer-body">
-          <div class="layer-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <div class="layer-content">
-            <div class="layer-title">A rollback path is agreed</div>
-            <div class="layer-desc">You can re-open the restricted firewall quickly if a group is locked out. Confirm who can make that change and how, before you close the zone.</div>
-          </div>
-          <div class="layer-tag">Both</div>
         </div>
       </div>
     </div>
@@ -594,15 +537,6 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
           <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Revoke on offboarding before the device is wiped</li>
         </ul>
       </div>
-      <div class="ops-card rev">
-        <h4>Both — ongoing</h4>
-        <ul class="ops-list">
-          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Reconcile registered access against active staff</li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Watch firewall drops for failed legitimate access</li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Keep a runbook for the lockout / rollback case</li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Re-confirm group-to-mechanism mapping each review</li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
@@ -624,16 +558,6 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
           <div class="pit-title">Treating a dynamic IP as static</div>
           <div class="pit-desc">A residential or consumer connection looks fixed for weeks, then the ISP rotates it and the whole group is locked out without warning.</div>
           <div class="pit-fix">Fix — confirm a business static IP in writing, or default the group to mTLS.</div>
-        </div>
-      </div>
-      <div class="pit-row rev">
-        <div class="pit-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="pit-content">
-          <div class="pit-title">Closing the zone before testing</div>
-          <div class="pit-desc">Removing the open inbound rule before every group has a verified path means the first failure is a live lockout, not a test result.</div>
-          <div class="pit-fix">Fix — keep the firewall permissive until every group passes a parallel test.</div>
         </div>
       </div>
       <div class="pit-row rev">
@@ -678,10 +602,6 @@ footer { background: #0c0c0c; padding: 5rem 0 3rem; border-top: 1px solid rgba(2
       <p class="subhead subhead--dim">In Short</p>
       <h2 class="display-2 display-2--light">Match the mechanism to the access pattern.</h2>
       <p>IP restriction for fixed locations. mTLS for roaming devices. Both where the data warrants it. Decide per user group, prepare the prerequisites, test before you close the zone.</p>
-      <div class="concl-ctas">
-        <a href="https://www.entityos.io/security/implementation/technical" class="btn btn--primary">Full Architecture</a>
-        <a href="https://www.entityos.io/security/the-solution" class="btn">The Solution</a>
-      </div>
       <div class="key-box rev">
         The two mechanisms are <strong>independent — not sequential</strong>. You do not roll out one before the other. A single organisation runs office desktops on IP allowlisting and roaming laptops on mTLS certificates at the same time, against the same restricted firewall — and requires <strong>both</strong> for its most sensitive groups. The combination is decided by each group's access pattern, not a mandated order.
       </div>
