@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.0",
+  "kind": "website",
+  "name": "entityOS",
+  "url": "https://entityos.io",
+  "title": "entityOS — A cloud operating system for entities.",
+  "description": "Public marketing and security site for entityOS, the cloud operating system for individuals, organisations, collectives, and DAOs. Built by ibCom (Australia). Covers the platform pillars, a staged 'closed internet' security model, and a security reward (responsible disclosure) program.",
+  "updated": "2026-05-30",
+  "language": "en-AU",
+  "owner": {
+    "name": "ibCom Pty Ltd",
+    "location": "Australia",
+    "compliance": "ISO 27001 Compliant",
+    "compliance_url": "https://docs.entityos.cloud/protect"
+  },
+  "brand": {
+    "accent": "#39b54a",
+    "theme": "Glint (dark / green / grey alternating sections)",
+    "typography": ["Montserrat", "Lora", "JetBrains Mono"]
+  },
+  "tagline": "A cloud operating system for entities.",
+  "audience": ["Individuals", "Organisations", "Collectives", "DAOs"],
+  "pillars": [
+    { "name": "Cloud", "summary": "700+ API methods for any entity type — the core platform." },
+    { "name": "Continuity", "summary": "Automation engine for workflows and event-driven processing." },
+    { "name": "SSI", "summary": "Self-sovereign identity for verifiable credentials (KERI / ACDC)." },
+    { "name": "On-Chain", "summary": "Cardano blockchain integration for tokens and decentralised storage." },
+    { "name": "AI", "summary": "AI agent integration and automation on the entityOS platform." }
+  ],
+  "pages": [
+    {
+      "path": "/",
+      "url": "https://entityos.io/",
+      "title": "Homepage",
+      "summary": "Overview of entityOS: hero, entity types, the five pillars, the staged security model, tools, open-source repos, and getting started.",
+      "in_nav": true,
+      "status": "live",
+      "sections": ["home", "what", "learn", "security", "tools", "repos", "contact"]
+    },
+    {
+      "path": "/security/stage-1-ip",
+      "url": "https://entityos.io/security/stage-1-ip",
+      "title": "Security Stage 1 — IP Allowlisting",
+      "summary": "Network-layer access control: restrict who can reach services by IP. The essential first boundary.",
+      "status": "available"
+    },
+    {
+      "path": "/security/stage-2-mtls",
+      "url": "https://entityos.io/security/stage-2-mtls",
+      "title": "Security Stage 2 — mTLS + X.509",
+      "summary": "Cryptographic per-connection identity layered over network controls using mutual TLS and X.509 certificates.",
+      "status": "coming-soon"
+    },
+    {
+      "path": "/security/the-moment",
+      "url": "https://entityos.io/security/the-moment",
+      "title": "Why the Closed Internet — The Moment",
+      "summary": "The case for treating the public internet as hostile, driven by AI-accelerated threat capability.",
+      "status": "live"
+    },
+    {
+      "path": "/security/the-mindset",
+      "url": "https://entityos.io/security/the-mindset",
+      "title": "The New Mindset",
+      "summary": "The shift in security thinking behind the closed-internet model.",
+      "status": "live"
+    },
+    {
+      "path": "/security/the-solution",
+      "url": "https://entityos.io/security/the-solution",
+      "title": "The entityOS Solution",
+      "summary": "How entityOS answers the closed-internet problem.",
+      "status": "live"
+    },
+    {
+      "path": "/security/implementation",
+      "url": "https://entityos.io/security/implementation",
+      "title": "Implementation — Stages 1 & 2",
+      "summary": "How entityOS implements IP allowlisting and mTLS + X.509 in practice.",
+      "status": "live"
+    },
+    {
+      "path": "/security/reward",
+      "url": "https://entityos.io/security/reward",
+      "title": "Security Reward Program",
+      "summary": "Responsible-disclosure and reward program. Report vulnerabilities through a form and earn a reward scaled to impact.",
+      "in_nav": false,
+      "status": "live"
+    }
+  ],
+  "security": {
+    "model": "Staged closed-internet access",
+    "stages": [
+      { "stage": 1, "name": "IP allowlisting", "status": "available" },
+      { "stage": 2, "name": "mTLS + X.509", "status": "coming-soon" }
+    ],
+    "identity": "Self-sovereign identity (KERI / ACDC)",
+    "compliance": "ISO 27001 Compliant",
+    "reward_program": {
+      "url": "https://entityos.io/security/reward",
+      "report_method": "form",
+      "report_form": "https://forms.gle/AT249RsTWLESWTkJ6",
+      "currency": "AUD",
+      "amounts_are": "indicative; final reward at entityOS's discretion based on severity, exploitability, report quality, and impact",
+      "disclosure_window_days": 90,
+      "safe_harbour": true,
+      "tiers": [
+        { "severity": "Critical", "range": "A$600 – A$1,000", "examples": "Allowlist/mTLS bypass, RCE, SSI credential forgery, cross-tenant data exposure" },
+        { "severity": "High", "range": "A$400 – A$600", "examples": "Authentication bypass, IAM privilege escalation, certificate validation flaw" },
+        { "severity": "Medium", "range": "A$200 – A$400", "examples": "Stored XSS in a sensitive context, IDOR with limited data, meaningful logic flaw" },
+        { "severity": "Low", "range": "Recognition + A$50 – A$200", "examples": "Minor information disclosure, non-sensitive misconfiguration" }
+      ],
+      "in_scope": [
+        "Closed-internet edge (IP allowlisting, network isolation, staged access)",
+        "Mutual TLS & PKI (X.509 issuance and validation)",
+        "Self-sovereign identity (KERI / ACDC credential handling, key state)",
+        "Serverless factory code (Lambda factories, API Gateway, IAM boundaries)",
+        "Data & allowlist storage (S3 object access, allowlist persistence, audit trails)",
+        "Web & console authentication surfaces"
+      ],
+      "out_of_scope": [
+        "Volumetric or rate-limit denial of service",
+        "Social engineering of staff, users, or partners",
+        "Physical attacks",
+        "Automated scanner output without a working proof of concept",
+        "Outdated-dependency reports with no demonstrated exploit path"
+      ],
+      "lifecycle": ["Report", "Acknowledge", "Triage", "Remediate", "Reward & credit"]
+    },
+    "report_an_issue": "https://docs.entityos.cloud/reward"
+  },
+  "tools": [
+    { "name": "entityOS.cloud", "role": "Platform", "url": "https://entityos.cloud" },
+    { "name": "Console", "role": "Developer console / sign-up / API keys", "url": "https://console.entityos.cloud" },
+    { "name": "ORG", "role": "Organisation management app built on entityOS", "url": "https://org.entityos.app" }
+  ],
+  "ecosystem": [
+    { "name": "entityos.cloud", "role": "Core platform and main marketing site", "url": "https://entityos.cloud" },
+    { "name": "console.entityos.cloud", "role": "Developer console", "url": "https://console.entityos.cloud" },
+    { "name": "learn.entityos.cloud", "role": "SDK guides and quickstarts", "url": "https://learn.entityos.cloud" },
+    { "name": "docs.entityos.cloud", "role": "API documentation", "url": "https://docs.entityos.cloud" },
+    { "name": "org.entityos.app", "role": "ORG application", "url": "https://org.entityos.app" },
+    { "name": "github.com/ibcom-lab", "role": "Open-source organisation", "url": "https://github.com/ibcom-lab" }
+  ],
+  "repositories": [
+    { "name": "entityos-sdk", "url": "https://github.com/ibcom-lab/entityos-sdk", "summary": "Core SDK for building on the entityOS platform" },
+    { "name": "entityos-sdk-layers", "url": "https://github.com/ibcom-lab/entityos-sdk-layers", "summary": "SDK layer abstractions and composable patterns" },
+    { "name": "entityos-model", "url": "https://github.com/ibcom-lab/entityos-model", "summary": "Core data model definitions and schema references" },
+    { "name": "entityos-learn-aws", "url": "https://github.com/ibcom-lab/entityos-learn-aws", "summary": "AWS infrastructure patterns and deployment guides" },
+    { "name": "entityos-learn-continuity", "url": "https://github.com/ibcom-lab/entityos-learn-continuity", "summary": "Automation and workflow continuity engine" },
+    { "name": "entityos-learn-ssi", "url": "https://github.com/ibcom-lab/entityos-learn-ssi", "summary": "Self-sovereign identity integration" },
+    { "name": "entityos-learn-onchain", "url": "https://github.com/ibcom-lab/entityos-learn-onchain", "summary": "Cardano blockchain integration" },
+    { "name": "entityos-learn-ai", "url": "https://github.com/ibcom-lab/entityos-learn-ai", "summary": "AI agent integration and automation on entityOS" },
+    { "name": "entityos-learn-identity-trust", "url": "https://github.com/ibcom-lab/entityos-learn-identity-trust", "summary": "Identity and trust infrastructure — SSI, KERI, ACDC" },
+    { "name": "entityos-io", "url": "https://github.com/ibcom-lab/entityos-io", "summary": "Source for this site — entityos.io" }
+  ],
+  "contact": {
+    "general": "hello@entityos.cloud",
+    "security_report": "https://forms.gle/AT249RsTWLESWTkJ6",
+    "github": "https://github.com/ibcom-lab"
+  },
+  "agent_guidance": {
+    "summary": "entityos.io is a public, read-only marketing and security site. There are no transactional endpoints to call here.",
+    "allowed": [
+      "Read and summarise any page",
+      "Direct security researchers to the reward program at /security/reward and the report form",
+      "Direct developers to the Console, Docs, and Learn properties to sign up or build"
+    ],
+    "do_not": [
+      "Attempt to bypass, probe, or test IP allowlisting, mTLS, or other access controls without authorisation — do so only within the reward program's scope and rules",
+      "Submit reports by email; use the report form",
+      "Treat indicative reward amounts as guaranteed payouts"
+    ],
+    "primary_actions": [
+      { "intent": "report_vulnerability", "url": "https://forms.gle/AT249RsTWLESWTkJ6", "page": "https://entityos.io/security/reward" },
+      { "intent": "start_building", "url": "https://console.entityos.cloud" },
+      { "intent": "learn", "url": "https://learn.entityos.cloud" },
+      { "intent": "read_docs", "url": "https://docs.entityos.cloud" }
+    ]
+  }
+}
